@@ -1,28 +1,45 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 2</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 2</ion-title>
-        </ion-toolbar>
-      </ion-header>
-      
-      <ExploreContainer name="Tab 2 page" />
-    </ion-content>
-  </ion-page>
+  <base-layout
+    page-title="Tab2"
+    fullscreen
+    :show-back-link="false"
+    collapse="condense"
+    title-size="large"
+  >
+    <p>
+      <ion-button @click="count++">
+        Increment
+      </ion-button>
+    </p>
+    <p v-for="i in 100" :key="i">
+      {{ `count = ${count}` }}
+    </p>
+
+    <ExploreContainer name="Tab 2 page" />
+  </base-layout>
 </template>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import { IonButton } from "@ionic/vue";
+import ExploreContainer from "@/components/ExploreContainer.vue";
+import { defineComponent, defineAsyncComponent, ref } from "vue";
+const BaseLayout = defineAsyncComponent(() =>
+  import("@/components/base/BaseLayout.vue")
+);
 
-export default  {
-  name: 'Tab2',
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
-}
+export default defineComponent({
+  name: "Tab2",
+  components: {
+    ExploreContainer,
+    IonButton,
+    BaseLayout,
+  },
+  setup() {
+    const count = ref(0);
+    
+    return {
+      count,
+    };
+  },
+});
 </script>
