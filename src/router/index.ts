@@ -36,6 +36,11 @@ const routes: Array<RouteRecordRaw> = [
     ],
   },
   {
+    path: "/i18n",
+    name: "I18n",
+    component: () => import("@/views/I18n.vue"),
+  },
+  {
     path: "/error404",
     name: "Error404",
     component: () => import("@/views/Error404.vue"),

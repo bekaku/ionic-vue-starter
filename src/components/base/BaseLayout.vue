@@ -19,7 +19,7 @@
         </ion-toolbar>
       </slot>
     </ion-header>
-    <ion-content :fullscreen="fullscreen">
+    <ion-content :fullscreen="fullscreen" class="ion-padding">
       <ion-header v-if="collapse == 'condense'" collapse="condense">
         <ion-toolbar>
           <ion-title size="large">Tab 3</ion-title>

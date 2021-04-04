@@ -27,15 +27,27 @@
           size="large"
           :icon="phonePortraitOutline"
         ></ion-icon>
-        <router-link to="/vuex">Vuex</router-link>
       </ion-col>
     </ion-row>
-    <p>
-      <ion-button @click="setDark">
-        Test
-      </ion-button>
-    </p>
-    <p>{{ "dark : " + dark }}</p>
+    <ion-row>
+      <ion-col>
+        <p><router-link to="/i18n">I18n</router-link></p>
+        <p><router-link to="/vuex">Vuex</router-link></p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button @click="setDark">
+          Toggle Dark mode
+        </ion-button>
+        <p>{{ "dark : " + dark }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ExploreContainer @onSubmit="onEmit"></ExploreContainer>
+      </ion-col>
+    </ion-row>
   </base-layout>
 </template>
 
@@ -43,11 +55,15 @@
 import { defineComponent, defineAsyncComponent, onMounted, ref } from "vue";
 import { IonIcon, IonButton, IonAvatar, IonRow, IonCol } from "@ionic/vue";
 import { phonePortraitOutline, ellipsisVertical } from "ionicons/icons";
+import { Plugins } from "@capacitor/core";
+const { Device } = Plugins;
+
 const BaseLayout = defineAsyncComponent(() =>
   import("@/components/base/BaseLayout.vue")
 );
-import { Plugins } from "@capacitor/core";
-const { Device } = Plugins;
+const ExploreContainer = defineAsyncComponent(() =>
+  import("@/components/ExploreContainer.vue")
+);
 export default defineComponent({
   name: "Tab1",
   components: {
@@ -57,9 +73,11 @@ export default defineComponent({
     IonAvatar,
     IonRow,
     IonCol,
+    ExploreContainer,
   },
 
-  setup() {
+  setup(props, context) {
+    console.log("Tab1 > props", props, "context", context);
     const logDeviceInfo = async () => {
       const info = await Device.getInfo();
       console.log(info);
@@ -68,19 +86,14 @@ export default defineComponent({
     onMounted(() => {
       console.log("Tab 1 onMunted");
       logDeviceInfo();
-
-      const prefersColor = window.matchMedia("(prefers-color-scheme: dark)");
-      dark.value = prefersColor.matches;
-
-      // prefersColor.addEventListener("change", (mediaQuery) => {
-      //   dark.value = mediaQuery.matches;
-      //   this.updateDarkMode();
-      // });
     });
 
     const setDark = () => {
       dark.value = !dark.value;
-      document.body.classList.toggle("dark", dark.value);
+      document.body.setAttribute("color-theme", dark.value ? "dark" : "ligth");
+    };
+    const onEmit = (from: string) => {
+      console.log("onEmit", from);
     };
 
     return {
@@ -88,6 +101,7 @@ export default defineComponent({
       ellipsisVertical,
       dark,
       setDark,
+      onEmit,
     };
   },
 });
