@@ -75,11 +75,43 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
+  /* Custom variables */
+  --v-main-bg-color: #f0f2f5;
+  --v-main-bg-color-theme-dark: #171717;
+  --v-second-bg-color-theme-dark: #1c1c1d;
+
+  --v-main-border-color: #dcdcdc;
+  --v-main-border-color-theme-dark: #282829;
+
+  --v-main-border-light-color: #f0f0f0;
+  --v-main-border-light-color-theme-dark: #282829;
+
+  --v-color-white: #fff;
+  --v-bar-background: #fff;
+  --v-bar-background-dark: #1f1f1f;
+  /* End Custom Variables */
+
+  /* Modufy Ionic variables */
+
   /* Set the background of the entire app */
-  /* --ion-background-color: #f0f2f5; */
+  --ion-background-color: var(--v-main-bg-color);
   /* Set the font family of the entire app */
   --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
     "Roboto", sans-serif;
+
+  /* Tab bar  */
+  --ion-tab-bar-background: var(--v-bar-background);
+  --ion-tab-bar-border-color: var(--v-main-border-light-color);
+  /* --ion-tab-bar-color : #fff; */
+  /* --ion-tab-bar-color-selected : var(--ion-color-warning-tint); */
+
+  /* Tool bar */
+  --ion-toolbar-background: var(--v-bar-background);
+  --ion-toolbar-border-color: var(--v-main-border-light-color);
+
+  /* Item  */
+  --ion-item-background: var(--v-color-white);
+  /* End  Modufy Ionic variables  */
 }
 
 /* @media (prefers-color-scheme: dark) { */
@@ -157,6 +189,21 @@ body[color-theme="dark"] {
   --ion-color-light-contrast-rgb: 255, 255, 255;
   --ion-color-light-shade: #1e2023;
   --ion-color-light-tint: #383a3e;
+
+  /* Tab bar  */
+  --ion-tab-bar-background: var(--v-bar-background-dark);
+  --ion-tab-bar-border-color: var(--v-main-border-light-color-theme-dark);
+
+  /* Tool bar */
+  --ion-toolbar-background: var(--v-bar-background-dark);
+  --ion-toolbar-border-color: var(--v-main-border-light-color-theme-dark);
+
+  /* Item  */
+  --ion-item-background: var(--v-second-bg-color-theme-dark);
+
+  /* Custom variable */
+  --v-color-white: var(--v-main-bg-color-theme-dark);
+  /* End Custom variables */
 }
 
 /*
@@ -245,3 +292,7 @@ body[color-theme="dark"] {
   --ion-card-background: #1e1e1e;
 }
 /* } */
+
+.v-bg-white {
+  background-color: var(--v-color-white);
+}

@@ -20,7 +20,7 @@ export default (): any => {
     });
 
     //add to appSetting store
-    // store.dispatch("appSetting/setLocaleAction", locale.value);
+    store.dispatch("appSetting/setLocaleAction", locale.value);
   };
   watch(locale, (newValue, oldValue) => {
     if (newValue != oldValue) {

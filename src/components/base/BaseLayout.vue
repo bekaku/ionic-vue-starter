@@ -2,12 +2,12 @@
   <ion-page>
     <ion-header>
       <slot name="toolbar">
-        <ion-toolbar>
+        <ion-toolbar :color="toolbarColor">
           <div slot="start">
             <slot name="actions-start">
               <ion-back-button
                 v-if="showBackLink"
-                text="bak"
+                :text="WeeTranslate('base.back')"
                 :default-href="pageDefaultBackLink"
               ></ion-back-button>
             </slot>
@@ -19,12 +19,17 @@
         </ion-toolbar>
       </slot>
     </ion-header>
-    <ion-content :fullscreen="fullscreen" class="ion-padding">
-      <ion-header v-if="collapse == 'condense'" collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 3</ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <ion-content
+      :fullscreen="fullscreen"
+      :class="contentPadding ? 'ion-padding' : ''"
+    >
+      <template v-if="collapse == 'condense'">
+        <ion-header collapse="condense">
+          <ion-toolbar :color="toolbarColor">
+            <ion-title size="large">{{ pageTitle }}</ion-title>
+          </ion-toolbar>
+        </ion-header>
+      </template>
 
       <slot />
     </ion-content>
@@ -43,12 +48,17 @@ import {
   isPlatform,
 } from "@ionic/vue";
 import { defineComponent } from "vue";
+import useLocale from "@/composables/useLocale";
 export default defineComponent({
   //   props: ["pageTitle", "pageDefaultBackLink", ],
   props: {
     pageTitle: {
       type: String,
       default: "",
+    },
+    toolbarColor: {
+      type: String,
+      default: undefined,
     },
     pageDefaultBackLink: {
       type: String,
@@ -57,6 +67,10 @@ export default defineComponent({
     collapse: {
       type: String,
       default: undefined, //condense
+    },
+    contentPadding: {
+      type: Boolean,
+      default: true,
     },
     fullscreen: {
       type: Boolean,
@@ -81,8 +95,10 @@ export default defineComponent({
     IonButtons,
   },
   setup() {
+    const { WeeTranslate } = useLocale();
     return {
       isPlatform,
+      WeeTranslate,
     };
   },
 });

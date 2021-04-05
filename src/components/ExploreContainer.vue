@@ -37,11 +37,11 @@ export default defineComponent({
     const divRef = ref(null);
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { attrs, emit, slots } = context;
-    console.log(context);
+    // console.log(context);
 
     onMounted(() => {
       // the DOM element will be assigned to the ref after initial render
-      console.log("devRef", divRef.value); // <div>This is a root element</div>
+      // console.log("devRef", divRef.value); // <div>This is a root element</div>
     });
 
     const emitToParent = () => {

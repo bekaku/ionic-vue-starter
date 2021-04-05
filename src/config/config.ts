@@ -5,6 +5,7 @@ export const AppPrefix = "ionic_vue_stater";
 export const AppVersion = "1.0.0";
 export const CodeVersion = 1;
 export const PoroductionMode = false;
+export const DefaultDarkMode = false;
 export const DefaultLocale = "th";
 export const DefaultPassword = "en";
 export const LocaleOptions: LocaleOption[] = [
@@ -31,6 +32,7 @@ export const LocalStorageAtt = {
   USER: `${AppPrefix}_user`,
   LANGUGE: `${AppPrefix}_languge`,
   THEME: `${AppPrefix}_theme`,
+  DARK_MODE: `${AppPrefix}_theme_dark`,
   COOKIE_POLICY: `${AppPrefix}_cookie_policy`,
   UNIQE_TOKEN: `${AppPrefix}_uniqe_token`,
 };
@@ -61,7 +63,7 @@ export const DefaultAxiosHeader = {
 // export const AxiosMethod = { GET: 1, POST: 2, PUT: 3, DELETE: 4 };
 // export const CookieExpire = { Languge: 365, Theme: 365, Auth: 7 };
 export enum CookieExpire {
-  Languge = 365,
-  Theme = 365,
+  Languge = 365 * 100,
+  Theme = 365 * 100,
   Auth = 7,
 }

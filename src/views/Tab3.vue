@@ -2,13 +2,13 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Tab 3</ion-title>
+        <ion-title>{{ WeeTranslate("base.other") }}</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
       <ion-header collapse="condense">
         <ion-toolbar>
-          <ion-title size="large">Tab 3</ion-title>
+          <ion-title size="large">{{ WeeTranslate("base.other") }}</ion-title>
         </ion-toolbar>
       </ion-header>
       <p v-for="i in 100" :key="i">
@@ -26,8 +26,9 @@ import {
   IonTitle,
   IonContent,
 } from "@ionic/vue";
-
-export default {
+import { defineComponent } from "vue";
+import useLocale from "@/composables/useLocale";
+export default defineComponent({
   name: "Tab3",
   components: {
     IonHeader,
@@ -36,5 +37,11 @@ export default {
     IonContent,
     IonPage,
   },
-};
+  setup() {
+    const { WeeTranslate } = useLocale();
+    return {
+      WeeTranslate,
+    };
+  },
+});
 </script>

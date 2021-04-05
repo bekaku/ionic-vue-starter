@@ -4,17 +4,18 @@
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon :icon="homeOutline" />
-          <ion-label>Tab 1</ion-label>
+          <ion-label>{{ WeeTranslate("base.home") }}</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="tab2" href="/tabs/tab2">
           <ion-icon :icon="chatbubbleOutline" />
-          <ion-label>Tab 2</ion-label>
+          <ion-label>{{ WeeTranslate("nav.chats") }}</ion-label>
+          <ion-badge color="danger">22</ion-badge>
         </ion-tab-button>
 
         <ion-tab-button tab="tab3" href="/tabs/tab3">
           <ion-icon :icon="ellipsisHorizontalOutline" />
-          <ion-label>Tab 3</ion-label>
+          <ion-label>{{ WeeTranslate("base.other") }}</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
@@ -35,16 +36,18 @@ import {
   chatbubbleOutline,
   ellipsisHorizontalOutline,
 } from "ionicons/icons";
-
+import useLocale from "@/composables/useLocale";
 export default {
   name: "Tabs",
   components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
+    const { WeeTranslate } = useLocale();
     return {
       homeOutline,
       chatbubbleOutline,
       ellipsisHorizontalOutline,
+      WeeTranslate,
     };
   },
 };
