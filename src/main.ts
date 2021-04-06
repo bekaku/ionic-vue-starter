@@ -25,6 +25,10 @@ import "@ionic/vue/css/display.css";
 /* Theme variables */
 import "./theme/variables.css";
 
+/* Add all required icons globally */
+import addIcons from "./plugins/addIcons";
+addIcons();
+
 const app = createApp(App)
   .use(i18n)
   .use(store)

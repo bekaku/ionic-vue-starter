@@ -4,12 +4,12 @@ http://ionicframework.com/docs/theming/ */
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #008bf2;
+  --ion-color-primary-rgb: 0,139,242;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #007ad5;
+  --ion-color-primary-tint: #1a97f3;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -76,7 +76,8 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-tint: #f5f6f9;
 
   /* Custom variables */
-  --v-main-bg-color: #f0f2f5;
+  /* --v-main-bg-color: #f0f2f5; */
+  --v-main-bg-color: #fff;
   --v-main-bg-color-theme-dark: #171717;
   --v-second-bg-color-theme-dark: #1c1c1d;
 
@@ -111,6 +112,7 @@ http://ionicframework.com/docs/theming/ */
 
   /* Item  */
   --ion-item-background: var(--v-color-white);
+  --ion-item-border-color: var(--v-main-border-light-color);
   /* End  Modufy Ionic variables  */
 }
 
@@ -122,12 +124,12 @@ http://ionicframework.com/docs/theming/ */
 
 body[color-theme="dark"] {
   /** primary **/
-  --ion-color-primary: #3880ff;
-  --ion-color-primary-rgb: 56, 128, 255;
+  --ion-color-primary: #008bf2;
+  --ion-color-primary-rgb: 0,139,242;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #3171e0;
-  --ion-color-primary-tint: #4c8dff;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #007ad5;
+  --ion-color-primary-tint: #1a97f3;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -203,6 +205,7 @@ body[color-theme="dark"] {
 
   /* Custom variable */
   --v-color-white: var(--v-main-bg-color-theme-dark);
+  --ion-item-border-color: var(--v-main-border-light-color-theme-dark);
   /* End Custom variables */
 }
 

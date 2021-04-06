@@ -16,14 +16,22 @@
     </p>
 
     <ExploreContainer name="Tab 2 page" />
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button color="primary" @click="WeeScrollToTop">
+        <ion-icon :icon="arrowUpOutline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
   </base-layout>
 </template>
 
 <script lang="ts">
-import { IonButton } from "@ionic/vue";
+import { IonButton, IonFab, IonFabButton, IonIcon } from "@ionic/vue";
 import ExploreContainer from "@/components/ExploreContainer.vue";
 import { defineComponent, defineAsyncComponent, ref } from "vue";
+import { arrowUpOutline } from "ionicons/icons";
 import useLocale from "@/composables/useLocale";
+import useBase from "@/composables/useBase";
 const BaseLayout = defineAsyncComponent(() =>
   import("@/components/base/BaseLayout.vue")
 );
@@ -34,14 +42,20 @@ export default defineComponent({
     ExploreContainer,
     IonButton,
     BaseLayout,
+    IonFab,
+    IonFabButton,
+    IonIcon,
   },
   setup() {
+    const { WeeScrollToTop } = useBase();
     const { WeeTranslate } = useLocale();
     const count = ref(0);
 
     return {
       count,
       WeeTranslate,
+      arrowUpOutline,
+      WeeScrollToTop,
     };
   },
 });

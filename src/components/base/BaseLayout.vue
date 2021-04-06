@@ -22,6 +22,7 @@
     <ion-content
       :fullscreen="fullscreen"
       :class="contentPadding ? 'ion-padding' : ''"
+      id="weeContent"
     >
       <template v-if="collapse == 'condense'">
         <ion-header collapse="condense">

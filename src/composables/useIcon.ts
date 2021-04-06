@@ -1,0 +1,54 @@
+// import * as allIcons from "ionicons/icons";
+import { add, trashOutline } from "ionicons/icons";
+import { addIcons } from "ionicons";
+// import _ from "lodash";
+// import { ref } from "vue";
+//https://github.com/ModusCreateOrg/ionic-vue/issues/120
+
+/**
+ * 1. Add all required icons globally
+  // main.js
+  import { addIcons } from 'ionicons'
+  import { add } from 'ionicons/icons'
+  addIcons({ add })
+
+  // your component
+  <ion-icon name="add"></ion-icon>
+
+  2. Set icon to imported value
+  <template>
+    <ion-icon :icon="icons.add"></ion-icon>
+  </template>
+
+  <script>
+  import { add } from 'ionicons/icons'
+
+  export default {
+    data() {
+      return { icons: { add } };
+    }
+  }
+  </script>
+
+  3. Add icons on a need-to-need basis
+  <template>
+    <ion-icon name="add"></ion-icon>
+  </template>
+
+  <script>
+  import { addIcons } from 'ionicons'
+  import { add } from 'ionicons/icons'
+  addIcons({ add })
+
+  export default {
+    ...
+  }
+  </script>
+ */
+export default () => {
+  addIcons({
+    add,
+    "trash-outline": trashOutline,
+  });
+  // addIcons(_.mapKeys(allIcons, (value, key) => _.kebabCase(key)));
+};
