@@ -109,6 +109,21 @@ export default (): any => {
     });
   };
 
+  const WeeAlert = async (
+    alertMessage: string | undefined,
+    alertHeader: string | undefined,
+    type :string |undefined //wee-alert-danger, wee-alert-warning
+  ) => {
+    const alert = await alertController.create({
+      cssClass: type ? type : undefined,
+      header: WeeTranslate("app.monogram"),
+      subHeader: alertHeader,
+      message: alertMessage,
+      buttons: [WeeTranslate("base.okay")],
+    });
+    return alert.present();
+  };
+
   /**
    * 
    * @param text 
@@ -140,5 +155,6 @@ export default (): any => {
     WeeScrollToTop,
     appProcessing,
     WeeLoading,
+    WeeAlert,
   };
 };

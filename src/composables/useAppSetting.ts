@@ -32,7 +32,7 @@ export default () => {
     Cookies.set(LocalStorageAtt.DARK_MODE, JSON.stringify(isdark), {
       expires: CookieExpire.Theme,
     });
-    document.body.setAttribute("color-theme", isdark ? "dark" : "ligth");
+    document.body.setAttribute("color-theme", isdark ? "dark" : "light");
     //add to appSetting store
     store.dispatch("appSetting/setDarkModeAction", isdark);
   };

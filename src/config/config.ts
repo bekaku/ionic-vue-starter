@@ -1,4 +1,4 @@
-import { LocaleOption } from "@/types/Common";
+import { LocaleOption } from "@/interface/Common";
 // export const SiteDomain =process.env.NODE_ENV === "production" ? "bekaku.com" : "localhost";
 // export const SiteUrl: string = `https://${SiteDomain}`;
 export const AppPrefix = "ionic_vue_stater";
@@ -36,11 +36,11 @@ export const LocalStorageAtt = {
   COOKIE_POLICY: `${AppPrefix}_cookie_policy`,
   UNIQE_TOKEN: `${AppPrefix}_uniqe_token`,
 };
-export const DefaultApiEndpoint = PoroductionMode
-  ? "https://centerapi.appedr.com"
-  : "http://localhost/grandats_project/grand-center-api";
+// export const DefaultApiEndpoint = PoroductionMode
+//   ? "https://centerapi.a.com"
+//   : "http://localhost/grandats_project/grand-center-api";
 // export const DefaultApiEndpoint = PoroductionMode ? 'https://centerapi.appedr.com' : 'http://localhost/grandats_project/grand-center-api';
-// export const DefaultApiEndpoint = "https://reqres.in/api";
+export const DefaultApiEndpoint = "https://reqres.in/api";
 export const ApiClient = "default";
 export const LocaleParam = "X-language";
 export const AuthorizationAtt = "Authorization";
@@ -48,22 +48,22 @@ export const UniqeTokenAtt = "X-uniqe-token";
 export const DefaultAxiosHeader = {
   Accept: "application/json",
   "Content-Type": "application/json; charset=UTF-8",
-  // LocaleParam: DefaultLocale,
+  LocaleParam: DefaultLocale,
   "Code-Version": CodeVersion,
   "X-Api-Client": ApiClient,
   Authorization: "",
 };
-//   export const DefaultAxios = axios.create({
-//     baseURL: DefaultApiEndpoint,
-//     withCredentials: false,
-//     headers: DefaultAxiosHeader,
-//     timeout: 60 * 1000,
-//   });
+// export const DefaultAxios = axios.create({
+//   baseURL: DefaultApiEndpoint,
+//   withCredentials: false,
+//   headers: DefaultAxiosHeader,
+//   timeout: 60 * 1000,
+// });
 
 // export const AxiosMethod = { GET: 1, POST: 2, PUT: 3, DELETE: 4 };
 // export const CookieExpire = { Languge: 365, Theme: 365, Auth: 7 };
 export enum CookieExpire {
-  Languge = 365 * 100,
-  Theme = 365 * 100,
+  Languge = 365 * 10,
+  Theme = 365 * 10,
   Auth = 7,
 }

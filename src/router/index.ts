@@ -46,6 +46,16 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("@/views/Vuex.vue"),
   },
   {
+    path: "/scroll",
+    name: "Scroll",
+    component: () => import("@/views/Scroll.vue"),
+  },
+  {
+    path: "/userList",
+    name: "UserList",
+    component: () => import("@/views/UserList.vue"),
+  },
+  {
     path: "/error404",
     name: "Error404",
     component: () => import("@/views/Error404.vue"),

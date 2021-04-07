@@ -13,3 +13,8 @@ export interface ComplexMessage {
   okMessage: string;
   cancelMessage: string;
 }
+
+export interface ApiResponse {
+  response?: any;
+  error?: any;
+}

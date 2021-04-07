@@ -56,7 +56,7 @@
             </ion-badge>
           </ion-item>
           <ion-item button @click="WeeGoTo('/vuex')">
-          <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+            <ion-icon name="briefcase-outline" slot="start"></ion-icon>
             <ion-label>
               vuex
             </ion-label>
@@ -84,13 +84,30 @@
               Delete
             </ion-button>
           </ion-item>
+          <ion-item
+            detail="true"
+            @click="
+              WeeAlert(
+                WeeTranslate('error.loginWrong'),
+                WeeTranslate('error.error')
+              )
+            "
+          >
+            <ion-label>WeeAlert</ion-label>
+          </ion-item>
           <ion-item>
             <ion-label>Loading</ion-label>
             <ion-button fill="clear" @click="showLoading" slot="end"
               >Show loading</ion-button
             >
           </ion-item>
-
+          <ion-item detail="true" @click="WeeGoTo('/scroll')">
+            <ion-label>Scroll Event</ion-label>
+          </ion-item>
+          <ion-item detail="true" @click="WeeGoTo('/userList')">
+            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+            <ion-label>Users</ion-label>
+          </ion-item>
           <ion-list-header>
             Recent Conversations
           </ion-list-header>
@@ -184,7 +201,7 @@ export default defineComponent({
   setup(props, context) {
     const { WeeTranslate, localeStore } = useLocale();
     const { darkMode, SetDarkMode } = useAppSetting();
-    const { WeeGoTo, WeeToast, WeeConfirm, WeeLoading } = useBase();
+    const { WeeGoTo, WeeToast, WeeConfirm, WeeLoading, WeeAlert } = useBase();
     // useIcon();
     console.log("Tab1 > props", props, "context", context);
     const logDeviceInfo = async () => {
@@ -232,6 +249,7 @@ export default defineComponent({
       WeeToast,
       confirm,
       showLoading,
+      WeeAlert,
     };
   },
 });

@@ -16,6 +16,7 @@
     "types": [
       "webpack-env",
       "jest",
+      "node"
       // "./node_modules/vue-i18n/dist"
     ],
     "paths": {

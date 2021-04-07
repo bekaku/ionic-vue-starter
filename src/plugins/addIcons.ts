@@ -57,7 +57,10 @@ import {
   languageOutline,
   sunnyOutline,
   ellipsisVerticalOutline,
-  briefcaseOutline,arrowUpOutline
+  briefcaseOutline,
+  arrowUpOutline,
+  arrowDownOutline,
+  peopleCircleOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 export default () => {
@@ -74,6 +77,8 @@ export default () => {
     "ellipsis-vertical-outline": ellipsisVerticalOutline,
     "briefcase-outline": briefcaseOutline,
     "arrow-up-outline": arrowUpOutline,
+    "arrow-down-outline": arrowDownOutline,
+    "people-circle-outline": peopleCircleOutline,
   });
   // addIcons(_.mapKeys(allIcons, (value, key) => _.kebabCase(key)));
 };

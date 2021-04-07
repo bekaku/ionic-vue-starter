@@ -5,9 +5,9 @@ http://ionicframework.com/docs/theming/ */
 :root {
   /** primary **/
   --ion-color-primary: #008bf2;
-  --ion-color-primary-rgb: 0,139,242;
+  --ion-color-primary-rgb: 0, 139, 242;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #007ad5;
   --ion-color-primary-tint: #1a97f3;
 
@@ -125,9 +125,9 @@ http://ionicframework.com/docs/theming/ */
 body[color-theme="dark"] {
   /** primary **/
   --ion-color-primary: #008bf2;
-  --ion-color-primary-rgb: 0,139,242;
+  --ion-color-primary-rgb: 0, 139, 242;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #007ad5;
   --ion-color-primary-tint: #1a97f3;
 
@@ -299,3 +299,20 @@ body[color-theme="dark"] {
 .v-bg-white {
   background-color: var(--v-color-white);
 }
+/* .wee-alert-danger .alert-title.sc-ion-alert-md,
+.wee-alert-danger .alert-title.sc-ion-alert-ios {
+  color: var(--ion-color-danger);
+} */
+
+.wee-alert-danger .alert-message.sc-ion-alert-md,
+.wee-alert-danger .alert-message.sc-ion-alert-ios {
+  color: var(--ion-color-danger);
+}
+.wee-alert-warning .alert-message.sc-ion-alert-md,
+.wee-alert-warning .alert-message.sc-ion-alert-ios {
+  color: var(--ion-color-warning);
+}
+/* .wee-alert-danger .alert-button.sc-ion-alert-md,
+.wee-alert-danger .alert-button.sc-ion-alert-ios {
+  color: var(--ion-color-danger);
+} */
