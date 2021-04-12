@@ -1,7 +1,7 @@
-import { LocaleOption } from "@/interface/Common";
+import { LocaleOption, DefaultAxiosInstance } from "@/interface/Common";
 // export const SiteDomain =process.env.NODE_ENV === "production" ? "bekaku.com" : "localhost";
 // export const SiteUrl: string = `https://${SiteDomain}`;
-export const AppPrefix = "ionic_vue_stater";
+export const AppPrefix = "ionic_vue_starter";
 export const AppVersion = "1.0.0";
 export const CodeVersion = 1;
 export const PoroductionMode = false;
@@ -39,16 +39,16 @@ export const LocalStorageAtt = {
 // export const DefaultApiEndpoint = PoroductionMode
 //   ? "https://centerapi.a.com"
 //   : "http://localhost/grandats_project/grand-center-api";
-// export const DefaultApiEndpoint = PoroductionMode ? 'https://centerapi.appedr.com' : 'http://localhost/grandats_project/grand-center-api';
 export const DefaultApiEndpoint = "https://reqres.in/api";
 export const ApiClient = "default";
-export const LocaleParam = "X-language";
-export const AuthorizationAtt = "Authorization";
 export const UniqeTokenAtt = "X-uniqe-token";
-export const DefaultAxiosHeader = {
+export const DefaultContentType = "application/json; charset=UTF-8";
+export const DefaultAxiosHeader: DefaultAxiosInstance = {
+  // baseURL: DefaultApiEndpoint,
   Accept: "application/json",
-  "Content-Type": "application/json; charset=UTF-8",
-  LocaleParam: DefaultLocale,
+  "Content-Type": DefaultContentType,
+  "X-language": DefaultLocale,
+
   "Code-Version": CodeVersion,
   "X-Api-Client": ApiClient,
   Authorization: "",
@@ -65,5 +65,5 @@ export const DefaultAxiosHeader = {
 export enum CookieExpire {
   Languge = 365 * 10,
   Theme = 365 * 10,
-  Auth = 7,
+  Auth = 30,
 }

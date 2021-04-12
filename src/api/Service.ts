@@ -1,4 +1,8 @@
-import { AxiosMethod, ApiResponse } from "../interface/Common";
+import {
+  AxiosMethod,
+  ApiResponse,
+  DefaultAxiosInstance,
+} from "../interface/Common";
 import { DefaultApiEndpoint, DefaultAxiosHeader } from "@/config/config";
 import axios, { AxiosInstance } from "axios";
 export default class Service {
@@ -11,11 +15,13 @@ export default class Service {
       resove(`Bearer your_jwt_token`);
     });
   }
-  async getDefaultAxios(): Promise<AxiosInstance> {
+  async getDefaultAxios(
+    header?: DefaultAxiosInstance | undefined
+  ): Promise<AxiosInstance> {
     const defaultAxios = axios.create({
       baseURL: DefaultApiEndpoint,
       withCredentials: false,
-      headers: DefaultAxiosHeader,
+      headers: header ? header : DefaultAxiosHeader,
       timeout: 60 * 1000,
     });
     defaultAxios.defaults.headers.Authorization = await this.getUserTokenKey();

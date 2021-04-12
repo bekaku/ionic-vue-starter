@@ -12,7 +12,7 @@
     </template>
     <template v-slot:actions-end>
       <ion-button router-link="#">
-        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+        <ion-icon slot="icon-only" :icon="ellipsisVerticalOutline"></ion-icon>
       </ion-button>
     </template>
     <!-- <ion-row>
@@ -47,7 +47,7 @@
           </ion-item>
 
           <ion-item button @click="WeeGoTo('/i18n')" :detail="false">
-            <ion-icon name="language-outline" slot="start"></ion-icon>
+            <ion-icon :icon="languageOutline" slot="start"></ion-icon>
             <ion-label>
               I18n
             </ion-label>
@@ -56,13 +56,13 @@
             </ion-badge>
           </ion-item>
           <ion-item button @click="WeeGoTo('/vuex')">
-            <ion-icon name="briefcase-outline" slot="start"></ion-icon>
+            <ion-icon :icon="briefcaseOutline" slot="start"></ion-icon>
             <ion-label>
               vuex
             </ion-label>
           </ion-item>
           <ion-item>
-            <ion-icon name="phone-portrait-outline" slot="start"></ion-icon>
+            <ion-icon :icon="phonePortraitOutline" slot="start"></ion-icon>
             <ion-label>Toast</ion-label>
             <ion-button
               fill="clear"
@@ -105,8 +105,15 @@
             <ion-label>Scroll Event</ion-label>
           </ion-item>
           <ion-item detail="true" @click="WeeGoTo('/userList')">
-            <ion-icon name="people-circle-outline" slot="start"></ion-icon>
+            <ion-icon :icon="peopleCircleOutline" slot="start"></ion-icon>
             <ion-label>Users</ion-label>
+          </ion-item>
+          <ion-item detail="true" @click="WeeGoTo('/auth/login')">
+            <ion-icon :icon="keyOutline" slot="start"></ion-icon>
+            <ion-label>Login</ion-label>
+          </ion-item>
+          <ion-item detail="true" @click="WeeGoTo('/icons')">
+            <ion-label>Icons</ion-label>
           </ion-item>
           <ion-list-header>
             Recent Conversations
@@ -171,12 +178,16 @@ import useAppSetting from "@/composables/useAppSetting";
 import { Plugins } from "@capacitor/core";
 const { Device } = Plugins;
 
-// const BaseLayout = defineAsyncComponent(() =>
-//   import("@/components/base/BaseLayout.vue")
-// );
-// const ExploreContainer = defineAsyncComponent(() =>
-//   import("@/components/ExploreContainer.vue")
-// );
+import {
+  ellipsisVerticalOutline,
+  sunnyOutline,
+  languageOutline,
+  briefcaseOutline,
+  phonePortraitOutline,
+  trashOutline,
+  peopleCircleOutline,
+  keyOutline,
+} from "ionicons/icons";
 export default defineComponent({
   name: "Tab1",
   components: {
@@ -188,7 +199,6 @@ export default defineComponent({
     IonAvatar,
     IonRow,
     IonCol,
-    // ExploreContainer,
     IonList,
     IonItem,
     IonLabel,
@@ -250,6 +260,14 @@ export default defineComponent({
       confirm,
       showLoading,
       WeeAlert,
+      ellipsisVerticalOutline,
+      sunnyOutline,
+      languageOutline,
+      briefcaseOutline,
+      phonePortraitOutline,
+      trashOutline,
+      peopleCircleOutline,
+      keyOutline,
     };
   },
 });

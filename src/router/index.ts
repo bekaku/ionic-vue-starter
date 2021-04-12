@@ -1,68 +1,106 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router";
 import { RouteRecordRaw } from "vue-router";
-import Error404 from "../views/Error404.vue";
-
+// import Error404 from "../pages/error/Error404.vue";
+// import AuthRouterOutlet from "../pages/auth/AuthRouterOutlet.vue";
+import checkAuth from "@/middleware/checkAuth";
 const routes: Array<RouteRecordRaw> = [
   {
     path: "/",
-    // redirect: "/home",
-    redirect: "/tabs/tab1",
-  },
-  {
-    path: "/home",
-    name: "Home",
-    component: () => import("@/views/Home.vue"),
-  },
-  {
-    path: "/tabs/",
-    component: () => import("@/views/Tabs.vue"),
+    beforeEnter: checkAuth,
+    component: () => import("@/layout/AppRouterOutlet.vue"),
     children: [
       {
         path: "",
-        redirect: "/tabs/tab1",
+        redirect: "/index",
       },
       {
-        path: "tab1",
-        component: () => import("@/views/Tab1.vue"),
+        path: "/index",
+        name: "Index",
+        component: () => import("@/pages/index.vue"),
       },
       {
-        path: "tab2",
-        component: () => import("@/views/Tab2.vue"),
+        path: "/tabs/",
+        component: () => import("@/pages/app/Tabs.vue"),
+        children: [
+          {
+            path: "",
+            redirect: "/tabs/tab1",
+          },
+          {
+            path: "tab1",
+            component: () => import("@/pages/app/Tab1.vue"),
+          },
+          {
+            path: "tab2",
+            component: () => import("@/pages/app/Tab2.vue"),
+          },
+          {
+            path: "tab3",
+            component: () => import("@/pages/app/Tab3.vue"),
+          },
+        ],
       },
       {
-        path: "tab3",
-        component: () => import("@/views/Tab3.vue"),
+        path: "/i18n",
+        name: "I18n",
+        component: () => import("@/pages/app/I18n.vue"),
+      },
+      {
+        path: "/vuex",
+        name: "Vuex",
+        component: () => import("@/pages/app/Vuex.vue"),
+      },
+      {
+        path: "/scroll",
+        name: "Scroll",
+        component: () => import("@/pages/app/Scroll.vue"),
+      },
+      {
+        path: "/userList",
+        name: "UserList",
+        component: () => import("@/pages/app/UserList.vue"),
+      },
+      {
+        path: "/icons",
+        name: "Icons",
+        component: () => import("@/pages/app/Icons.vue"),
       },
     ],
   },
   {
-    path: "/i18n",
-    name: "I18n",
-    component: () => import("@/views/I18n.vue"),
+    path: "/auth",
+    component: () => import("@/layout/AuthRouterOutlet.vue"),
+    children: [
+      {
+        path: "",
+        redirect: "/auth/login",
+      },
+      {
+        path: "login",
+        name: "Login",
+        component: () => import("@/pages/auth/Login.vue"),
+      },
+    ],
   },
   {
-    path: "/vuex",
-    name: "Vuex",
-    component: () => import("@/views/Vuex.vue"),
-  },
-  {
-    path: "/scroll",
-    name: "Scroll",
-    component: () => import("@/views/Scroll.vue"),
-  },
-  {
-    path: "/userList",
-    name: "UserList",
-    component: () => import("@/views/UserList.vue"),
-  },
-  {
-    path: "/error404",
-    name: "Error404",
-    component: () => import("@/views/Error404.vue"),
+    path: "/error",
+    component: () => import("@/layout/ErrorRouterOutlet.vue"),
+    children: [
+      {
+        path: "",
+        redirect: "/error/error404",
+      },
+      {
+        path: "error404",
+        name: "Error404",
+        component: () => import("@/pages/error/Error404.vue"),
+      },
+    ],
   },
   {
     path: "/:catchAll(.*)",
-    component: Error404,
+    redirect: "/error/error404",
+    // component: Error404,
   },
 ];
 

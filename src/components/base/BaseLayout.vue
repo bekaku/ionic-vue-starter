@@ -21,8 +21,8 @@
     </ion-header>
     <ion-content
       :fullscreen="fullscreen"
+      :scroll-y="scrollY"
       :class="contentPadding ? 'ion-padding' : ''"
-      id="weeContent"
     >
       <template v-if="collapse == 'condense'">
         <ion-header collapse="condense">
@@ -73,9 +73,13 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    scrollY: {
+      type: Boolean,
+      default: true,
+    },
     fullscreen: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     showBackLink: {
       type: Boolean,

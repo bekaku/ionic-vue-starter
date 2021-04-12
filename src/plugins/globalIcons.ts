@@ -61,6 +61,7 @@ import {
   arrowUpOutline,
   arrowDownOutline,
   peopleCircleOutline,
+  keyOutline,
 } from "ionicons/icons";
 import { addIcons } from "ionicons";
 export default () => {
@@ -79,6 +80,7 @@ export default () => {
     "arrow-up-outline": arrowUpOutline,
     "arrow-down-outline": arrowDownOutline,
     "people-circle-outline": peopleCircleOutline,
+    "key-outline": keyOutline,
   });
   // addIcons(_.mapKeys(allIcons, (value, key) => _.kebabCase(key)));
 };

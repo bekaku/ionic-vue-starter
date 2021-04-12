@@ -90,6 +90,8 @@ http://ionicframework.com/docs/theming/ */
   --v-color-white: #fff;
   --v-bar-background: #fff;
   --v-bar-background-dark: #1f1f1f;
+
+  --v-text-muted: #9a9a9c;
   /* End Custom Variables */
 
   /* Modufy Ionic variables */
@@ -206,6 +208,7 @@ body[color-theme="dark"] {
   /* Custom variable */
   --v-color-white: var(--v-main-bg-color-theme-dark);
   --ion-item-border-color: var(--v-main-border-light-color-theme-dark);
+  --v-text-muted: #8e8e93;
   /* End Custom variables */
 }
 
@@ -299,6 +302,16 @@ body[color-theme="dark"] {
 .v-bg-white {
   background-color: var(--v-color-white);
 }
+/*------Typology------*/
+.wee-fw-400 {
+  font-weight: 400 !important;
+}
+.wee-fw-600 {
+  font-weight: 600 !important;
+}
+.wee-text-muted {
+  color: var(--v-text-muted) !important;
+}
 /* .wee-alert-danger .alert-title.sc-ion-alert-md,
 .wee-alert-danger .alert-title.sc-ion-alert-ios {
   color: var(--ion-color-danger);
@@ -315,4 +328,12 @@ body[color-theme="dark"] {
 /* .wee-alert-danger .alert-button.sc-ion-alert-md,
 .wee-alert-danger .alert-button.sc-ion-alert-ios {
   color: var(--ion-color-danger);
+} */
+/* 
+@media (min-width: 700px) {
+  ion-app {
+    width: 700px;
+    margin: auto;
+    position: relative;
+  }
 } */
