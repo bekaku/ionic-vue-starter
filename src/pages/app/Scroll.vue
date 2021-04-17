@@ -25,12 +25,12 @@
       </ion-grid>
       <ion-fab vertical="top" horizontal="end" slot="fixed">
         <ion-fab-button color="primary" @click="scrollToBottom">
-          <ion-icon name="arrow-down-outline"></ion-icon>
+          <ion-icon :icon="arrowDownOutline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="primary" @click="scrollToTop">
-          <ion-icon name="arrow-up-outline"></ion-icon>
+          <ion-icon :icon="arrowUpOutline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </ion-content>
@@ -53,6 +53,10 @@ import {
   IonBackButton,
 } from "@ionic/vue";
 // import BaseLayout from "@/components/base/BaseLayout.vue";
+import {
+  arrowDownOutline,
+  arrowUpOutline,
+} from "ionicons/icons";
 import useBase from "@/composables/useBase";
 import useLocale from "@/composables/useLocale";
 export default defineComponent({
@@ -88,6 +92,8 @@ export default defineComponent({
       WeeScrollToTop,
       contentscroll,
       WeeTranslate,
+      arrowUpOutline,
+      arrowDownOutline,
       scrollToTop: () => contentscroll.value.$el.scrollToTop(500),
       scrollToBottom: () => contentscroll.value.$el.scrollToBottom(500),
     };
