@@ -7,7 +7,7 @@
             <slot name="actions-start">
               <ion-back-button
                 v-if="showBackLink"
-                :text="WeeTranslate('base.back')"
+                :text="backText"
                 :default-href="pageDefaultBackLink"
               ></ion-back-button>
             </slot>
@@ -54,6 +54,10 @@ export default defineComponent({
   //   props: ["pageTitle", "pageDefaultBackLink", ],
   props: {
     pageTitle: {
+      type: String,
+      default: "",
+    },
+    backText: {
       type: String,
       default: "",
     },

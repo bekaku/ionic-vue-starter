@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "iotest",
+  "appName": "Ionic vue Stater",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "dist",

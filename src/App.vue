@@ -5,10 +5,16 @@
 </template>
 
 <script lang="ts">
-import { IonApp, IonRouterOutlet } from "@ionic/vue";
+import {
+  IonApp,
+  IonRouterOutlet,
+  useBackButton,
+  useIonRouter,
+} from "@ionic/vue";
 import { defineComponent, onMounted } from "vue";
 import useLocale from "@/composables/useLocale";
 import useAppSetting from "@/composables/useAppSetting";
+import { App } from "@capacitor/app";
 export default defineComponent({
   name: "App",
   components: {
@@ -18,7 +24,16 @@ export default defineComponent({
   setup() {
     const { initAppLocale } = useLocale();
     const { initAppTheme } = useAppSetting();
-    onMounted(() => {
+    const ionRouter = useIonRouter();
+
+    // Hardware Back Button event
+    useBackButton(-1, () => {
+      if (!ionRouter.canGoBack()) {
+        App.exitApp();
+      }
+    });
+
+    onMounted(async () => {
       initAppTheme();
       initAppLocale();
     });

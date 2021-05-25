@@ -35,7 +35,7 @@
           <ion-item :detail="false">
             <ion-icon
               :color="darkMode ? 'warning' : 'dark'"
-              name="sunny-outline"
+              :icon="sunnyOutline"
               slot="start"
             ></ion-icon>
             <ion-label> Dark mode {{ "dark : " + darkMode }} </ion-label>
@@ -175,9 +175,7 @@ import useLocale from "@/composables/useLocale";
 import useBase from "@/composables/useBase";
 import useAppSetting from "@/composables/useAppSetting";
 // import useIcon from "@/composables/useIcon";
-import { Plugins } from "@capacitor/core";
-const { Device } = Plugins;
-
+import { Device } from "@capacitor/device";
 import {
   ellipsisVerticalOutline,
   sunnyOutline,
