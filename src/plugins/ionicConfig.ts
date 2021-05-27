@@ -1,5 +1,5 @@
 import {
-  arrowBackOutline,
+  chevronBackOutline,
 } from "ionicons/icons";
 export default {
   rippleEffect: true,
@@ -7,5 +7,5 @@ export default {
   animated: true,
   hardwareBackButton: true,
   backButtonText: "",
-  backButtonIcon: arrowBackOutline,
+  backButtonIcon: chevronBackOutline,
 };

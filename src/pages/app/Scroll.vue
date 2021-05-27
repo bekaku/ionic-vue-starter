@@ -4,10 +4,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button
-            default-href="/tabs/tab1"
-            :text="WeeTranslate('base.back')"
-          ></ion-back-button>
+          <ion-back-button default-href="/tabs/tab1"></ion-back-button>
         </ion-buttons>
         <ion-title>Scroll</ion-title>
       </ion-toolbar>
@@ -53,10 +50,7 @@ import {
   IonBackButton,
 } from "@ionic/vue";
 // import BaseLayout from "@/components/base/BaseLayout.vue";
-import {
-  arrowDownOutline,
-  arrowUpOutline,
-} from "ionicons/icons";
+import { arrowDownOutline, arrowUpOutline } from "ionicons/icons";
 import useBase from "@/composables/useBase";
 import useLocale from "@/composables/useLocale";
 export default defineComponent({

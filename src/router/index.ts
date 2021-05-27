@@ -65,6 +65,11 @@ const routes: Array<RouteRecordRaw> = [
         name: "Icons",
         component: () => import("@/pages/app/Icons.vue"),
       },
+      {
+        path: "/chat",
+        name: "Chat",
+        component: () => import("@/pages/app/Chat.vue"),
+      },
     ],
   },
   {
