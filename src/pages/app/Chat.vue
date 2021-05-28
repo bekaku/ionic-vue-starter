@@ -4,7 +4,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
+          <ion-back-button default-href="/tabs/tab2"></ion-back-button>
           <ion-avatar style="height:35px;width:35px;">
             <img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
           </ion-avatar>
@@ -15,10 +15,13 @@
     <ion-content fullscreen ref="contentsChatcroll">
       <ion-grid>
         <ion-row>
-          <ion-col class="ion-no-padding ion-no-margin" style="padding-bottom:100px;">
+          <ion-col
+            class="ion-no-padding ion-no-margin msger-chat"
+            style="padding-bottom:100px;"
+          >
             <section class="msger" v-for="item in 15" :key="item">
-              <main fullscreen class="msger-chat">
-                <div class="msg left-msg">
+              <main fullscreen>
+                <div class="msg left-msg ion-margin-top">
                   <div class="msg-img">
                     <ion-avatar style="height:35px;width:35px;">
                       <img
@@ -67,25 +70,26 @@
         <ion-row class="lower-content">
           <ion-col class="ion-no-padding ion-no-margin">
             <div>
-              <form class="msger-inputarea">
+              <div class="msger-inputarea">
                 <input
                   type="text"
                   class="msger-input"
                   placeholder="Enter your message..."
                 />
-                <button type="submit" class="msger-send-btn">Send</button>
-              </form>
+                <button type="button" class="msger-send-btn">Send</button>
+              </div>
             </div>
           </ion-col>
         </ion-row>
       </ion-grid>
+
     </ion-content>
   </ion-page>
   <!-- </base-layout> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onMounted } from "vue";
 import {
   IonRow,
   IonCol,
@@ -124,10 +128,17 @@ export default defineComponent({
     const onClick = () => {
       console.log("onClick");
     };
+    const scrollToBottom = () => {
+      contentsChatcroll.value.$el.scrollToBottom(300);
+    };
+    onMounted(() => {
+      scrollToBottom();
+    });
     return {
       WeeTranslate,
       arrowUpOutline,
       arrowDownOutline,
+      contentsChatcroll,
       scrollToTop: () => contentsChatcroll.value.$el.scrollToTop(500),
       scrollToBottom: () => contentsChatcroll.value.$el.scrollToBottom(500),
       onClick,
