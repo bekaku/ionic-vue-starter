@@ -16,50 +16,81 @@
       <ion-grid>
         <ion-row>
           <ion-col
-            class="ion-no-padding ion-no-margin msger-chat"
+            class="ion-no-padding ion-no-margin wee-messenger-chat"
             style="padding-bottom:100px;"
           >
-            <section class="msger" v-for="item in 15" :key="item">
+            <section
+              class="wee-messenger"
+              style="margin-top:10px;"
+              v-for="(item, index) in items"
+              :key="index"
+            >
               <main fullscreen>
-                <div class="msg left-msg ion-margin-top">
-                  <div class="msg-img">
+                <div
+                  v-if="!item.mine"
+                  class="wee-messenger-msg wee-messenger-left-msg"
+                >
+                  <div
+                    v-if="!isSameSender(index)"
+                    class="wee-messenger-img ion-margin-bottom"
+                  >
                     <ion-avatar style="height:35px;width:35px;">
-                      <img
-                        src="https://avatars.githubusercontent.com/u/33171470?v=4"
-                      />
+                      <img :src="item.avatar" />
                     </ion-avatar>
                   </div>
 
-                  <div class="msg-bubble">
-                    <div class="msg-info">
-                      <div class="msg-info-name">BOT</div>
-                      <div class="msg-info-time">12:45</div>
+                  <div
+                    class="wee-messenger-bubble"
+                    :style="isSameSender(index) ? 'margin-left:45px' : ''"
+                  >
+                    <div class="wee-messenger-info">
+                      <div
+                        v-if="!isSameSender(index)"
+                        class="wee-messenger-info-name"
+                      >
+                        {{ item.name }}
+                      </div>
+                      <div class="wee-messenger-info-time">{{ item.time }}</div>
                     </div>
 
                     <div class="msg-text ion-text-wrap">
-                      Hi, welcome to SimpleChat! Go ahead and send me a message.
-                      😄
+                      <template v-if="item.type === ChatMessageType.IMAGE">
+                        <ion-img :src="item.image"></ion-img>
+                      </template>
+                      <template v-else>
+                        <div v-html="convertToLink(item.text)"></div>
+                      </template>
                     </div>
                   </div>
                 </div>
 
-                <div class="msg right-msg">
-                  <!-- <div class="msg-img">
-                    <ion-avatar style="height:35px;width:35px;">
-                      <img
-                        src="https://avatars.githubusercontent.com/u/33171470?v=4"
-                      />
-                    </ion-avatar>
-                  </div> -->
-
-                  <div class="msg-bubble">
-                    <div class="msg-info">
-                      <div class="msg-info-name">Sajad</div>
-                      <div class="msg-info-time">12:46</div>
+                <div v-else class="wee-messenger-msg wee-messenger-right-msg">
+                  <div class="wee-messenger-bubble">
+                    <div class="wee-messenger-info">
+                      <div class="wee-messenger-info-time">{{ item.time }}</div>
                     </div>
-
                     <div class="msg-text ion-text-wrap">
-                      You can change your name in JS section!
+                      <template v-if="item.type === ChatMessageType.IMAGE">
+                        <ion-img :src="item.image"></ion-img>
+                      </template>
+                      <template v-else-if="item.type === ChatMessageType.MAP">
+                        <iframe
+                          v-if="item.lat_map && item.long_map"
+                          width="100%"
+                          height="150"
+                          frameborder="0"
+                          scrolling="no"
+                          marginheight="0"
+                          marginwidth="0"
+                          :src="
+                            `https://maps.google.com/maps?q=${item.lat_map},${item.long_map}&hl=es;z=14&amp;output=embed&zoom=5`
+                          "
+                        >
+                        </iframe>
+                      </template>
+                      <template v-else>
+                        <div v-html="convertToLink(item.text, true)"></div>
+                      </template>
                     </div>
                   </div>
                 </div>
@@ -67,29 +98,85 @@
             </section>
           </ion-col>
         </ion-row>
-        <ion-row class="lower-content">
+        <!-- <ion-row class="wee-messenger-lower-content">
           <ion-col class="ion-no-padding ion-no-margin">
-            <div>
-              <div class="msger-inputarea">
-                <input
-                  type="text"
-                  class="msger-input"
-                  placeholder="Enter your message..."
-                />
-                <button type="button" class="msger-send-btn">Send</button>
-              </div>
-            </div>
+            <ion-row>
+              <ion-col :size="isTextFocus ? 2 : 5">
+                <template v-if="!isTextFocus">
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col>
+                      <ion-button fill="clear" size="small">
+                        <ion-icon
+                          slot="icon-only"
+                          :icon="addOutline"
+                        ></ion-icon>
+                      </ion-button>
+                      <ion-button fill="clear" size="small">
+                        <ion-icon
+                          slot="icon-only"
+                          :icon="happyOutline"
+                        ></ion-icon>
+                      </ion-button>
+                      <ion-button fill="clear" size="small">
+                        <ion-icon
+                          slot="icon-only"
+                          :icon="imageOutline"
+                        ></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </template>
+                <template v-else>
+                  <ion-row class="ion-justify-content-center">
+                    <ion-col>
+                      <ion-button
+                        fill="clear"
+                        size="small"
+                        @click="isTextFocus = false"
+                      >
+                        <ion-icon
+                          slot="icon-only"
+                          :icon="chevronForwardOutline"
+                        ></ion-icon>
+                      </ion-button>
+                    </ion-col>
+                  </ion-row>
+                </template>
+              </ion-col>
+              <ion-col
+                class="ion-no-padding ion-no-margin"
+                :size="isTextFocus ? 10 : 7"
+              >
+                <ion-row>
+                  <ion-col :size="isTextFocus ? 10 : 12">
+                    <ion-textarea
+                      @click="isTextFocus = true"
+                      rows="1"
+                      class="wee-messenger-inputarea"
+                      v-model="text"
+                      placeholder="Write a reply..."
+                    ></ion-textarea>
+                  </ion-col>
+                  <ion-col v-if="isTextFocus" size="2">
+                    <ion-button fill="clear" size="small">
+                      <ion-icon slot="icon-only" :icon="send"></ion-icon>
+                    </ion-button>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+            </ion-row>
           </ion-col>
-        </ion-row>
-      </ion-grid>
+        </ion-row> -->
 
+        <message-bar @onSend="onSend"></message-bar>
+      </ion-grid>
     </ion-content>
   </ion-page>
   <!-- </base-layout> -->
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted } from "vue";
+import { defineComponent, ref, onMounted, defineAsyncComponent } from "vue";
 import {
   IonRow,
   IonCol,
@@ -101,16 +188,29 @@ import {
   IonTitle,
   IonBackButton,
   IonAvatar,
+  // IonButton,
+  // IonTextarea,
+  IonImg,
+  // IonIcon,
 } from "@ionic/vue";
-// import BaseLayout from "@/components/base/BaseLayout.vue";
-import { arrowDownOutline, arrowUpOutline } from "ionicons/icons";
+import { ChatMessageType } from "@/interface/Common";
+import { convertToLink } from "@/utils/util";
+import {
+  arrowDownOutline,
+  arrowUpOutline,
+  chevronForwardOutline,
+  happyOutline,
+  imageOutline,
+  addOutline,
+  send,
+} from "ionicons/icons";
 import useLocale from "@/composables/useLocale";
 export default defineComponent({
   name: "Vuex",
   components: {
-    // BaseButton: defineAsyncComponent(() =>
-    //   import("@/components/base/BaseButton.vue")
-    // ),
+    MessageBar: defineAsyncComponent(() =>
+      import("@/components/chat/MessageBar.vue")
+    ),
     IonRow,
     IonCol,
     IonGrid,
@@ -121,27 +221,156 @@ export default defineComponent({
     IonToolbar,
     IonBackButton,
     IonAvatar,
+    // IonTextarea,
+    // IonButton,
+    IonImg,
+    // IonIcon,
   },
   setup() {
     const { WeeTranslate } = useLocale();
     const contentsChatcroll = ref();
-    const onClick = () => {
-      console.log("onClick");
+    const onSend = (text : string) => {
+      console.log("onSend", text);
+    };
+    const items = ref([
+      {
+        name: "Fin",
+        text: "Hi, welcome to SimpleChat! Go ahead and send me a message.😄",
+        time: "12:45",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        type: ChatMessageType.TEXT,
+        mine: false,
+      },
+      {
+        name: "Fin",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "Listen, I've had a pretty messed up day",
+        time: "12:45",
+        type: ChatMessageType.TEXT,
+        mine: false,
+      },
+      {
+        name: "Bekaku",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "You can change your name in JS section!.",
+        time: "12:45",
+        type: ChatMessageType.TEXT,
+        mine: true,
+      },
+      {
+        name: "Fin",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "Okay",
+        time: "12:45",
+        type: ChatMessageType.TEXT,
+        mine: false,
+      },
+      {
+        name: "Bekaku",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "Sure",
+        time: "12:45",
+        type: ChatMessageType.TEXT,
+        mine: true,
+      },
+      {
+        name: "Bekaku",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "Just let me know!",
+        type: ChatMessageType.TEXT,
+        time: "12:45",
+        mine: true,
+      },
+      {
+        name: "Fin",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text:
+          "Just let me know! https://dribbble.com/shots/14355627-Live-Chat-App",
+        type: ChatMessageType.TEXT,
+        time: "12:45",
+        mine: false,
+      },
+      {
+        name: "Fin",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "",
+        type: ChatMessageType.IMAGE,
+        image:
+          "https://i.ibb.co/vwcwknr/126906845-3847263042004453-4231016022382760270-n.jpg",
+        time: "12:45",
+        mine: false,
+      },
+      {
+        name: "Bekaku",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "https://github.com/bekaku",
+        type: ChatMessageType.TEXT,
+        time: "12:45",
+        mine: true,
+      },
+      {
+        name: "Bekaku",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "",
+        lat_map: "13.961579505507864",
+        long_map: "100.63035970050973",
+        type: ChatMessageType.MAP,
+        time: "12:45",
+        mine: true,
+      },
+      {
+        name: "Fin",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text:
+          "Just let me know! https://dribbble.com/shots/14355627-Live-Chat-App",
+        type: ChatMessageType.TEXT,
+        time: "12:45",
+        mine: false,
+      },
+      {
+        name: "Fin",
+        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        text: "Just let me know!",
+        type: ChatMessageType.TEXT,
+        time: "12:45",
+        mine: false,
+      },
+    ]);
+    const isSameSender = (index: number) => {
+      const prevItem = items.value[index - 1];
+      const currentItem = items.value[index];
+      if (currentItem && prevItem) {
+        return currentItem.mine === prevItem.mine;
+      }
+      return false;
     };
     const scrollToBottom = () => {
-      contentsChatcroll.value.$el.scrollToBottom(300);
+      contentsChatcroll.value.$el.scrollToBottom(0);
     };
     onMounted(() => {
       scrollToBottom();
     });
-    return {
-      WeeTranslate,
+    const icons = {
       arrowUpOutline,
       arrowDownOutline,
       contentsChatcroll,
+      chevronForwardOutline,
+      happyOutline,
+      imageOutline,
+      addOutline,
+      send,
+    };
+    return {
+      WeeTranslate,
+      ...icons,
       scrollToTop: () => contentsChatcroll.value.$el.scrollToTop(500),
-      scrollToBottom: () => contentsChatcroll.value.$el.scrollToBottom(500),
-      onClick,
+      // scrollToBottom: () => contentsChatcroll.value.$el.scrollToBottom(500),
+      scrollToBottom,
+      onSend,
+      items,
+      isSameSender,
+      ChatMessageType,
+      convertToLink,
     };
   },
 });

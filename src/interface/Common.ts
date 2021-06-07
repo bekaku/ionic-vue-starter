@@ -4,6 +4,7 @@ export enum AxiosMethod {
   PUT,
   DELETE,
 }
+
 export declare enum Style {
   /**
    * Light text for dark backgrounds.
@@ -26,7 +27,7 @@ export declare enum Style {
    *
    * @since 1.0.0
    */
-  Default = "DEFAULT"
+  Default = "DEFAULT",
 }
 export enum SkeletonTypeList {
   AVATAR = "avatar",
@@ -72,4 +73,10 @@ export interface UserCredential {
   picture: UserCredentialPicture;
   userRoles?: string[];
   apiKey: string;
+}
+export enum ChatMessageType {
+  TEXT = 1,
+  IMAGE = 2,
+  MAP = 3,
+  SOUND = 4,
 }
