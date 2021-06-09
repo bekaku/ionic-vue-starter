@@ -7,7 +7,7 @@
   >
     <template v-slot:actions-start>
       <ion-avatar style="height:35px;width:35px;">
-        <img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
+        <img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
       </ion-avatar>
     </template>
     <template v-slot:actions-end>
@@ -21,7 +21,7 @@
           <ion-list-header>
             Ionic Starter Template
           </ion-list-header>
-          <ion-item :detail="false">
+          <ion-item detail="false" lines="none">
             <ion-icon
               :color="darkMode ? 'warning' : 'dark'"
               :icon="sunnyOutline"
@@ -35,7 +35,7 @@
             ></ion-toggle>
           </ion-item>
 
-          <ion-item button @click="WeeGoTo('/i18n')" :detail="false">
+          <ion-item button @click="WeeGoTo('/i18n')" detail="false" lines="none">
             <ion-icon :icon="languageOutline" slot="start"></ion-icon>
             <ion-label>
               I18n
@@ -44,13 +44,13 @@
               {{ `Current ${localeStore}` }}
             </ion-badge>
           </ion-item>
-          <ion-item button @click="WeeGoTo('/vuex')">
+          <ion-item button @click="WeeGoTo('/vuex')" detail="false" lines="none">
             <ion-icon :icon="briefcaseOutline" slot="start"></ion-icon>
             <ion-label>
               vuex
             </ion-label>
           </ion-item>
-          <ion-item>
+          <ion-item lines="none">
             <ion-icon :icon="phonePortraitOutline" slot="start"></ion-icon>
             <ion-label>Toast</ion-label>
             <ion-button
@@ -109,7 +109,7 @@
           </ion-list-header>
           <ion-item @click="WeeGoTo('/chat')">
             <ion-avatar slot="start">
-              <img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
+              <img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
             </ion-avatar>
             <ion-label>
               <h2>Finn</h2>

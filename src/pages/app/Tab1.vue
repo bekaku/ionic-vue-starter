@@ -7,7 +7,7 @@
   >
     <template v-slot:actions-start>
       <ion-avatar style="height:35px;width:35px;">
-        <img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
+        <img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
       </ion-avatar>
     </template>
     <template v-slot:actions-end>

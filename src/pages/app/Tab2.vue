@@ -32,7 +32,7 @@
         detail="false"
       >
         <ion-avatar slot="start" class="wee-avatar-50 wee-image-border-success">
-          <ion-img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
+          <ion-img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
         </ion-avatar>
         <ion-label class="ion-text-wrap">
           <h2>{{ item.name }}</h2>
@@ -66,7 +66,7 @@
         detail="false"
       >
         <ion-avatar slot="start" class="wee-avatar-50 wee-image-border-light">
-          <ion-img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
+          <ion-img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
         </ion-avatar>
         <ion-label class="ion-text-wrap">
           <h2>{{ item.name }}</h2>

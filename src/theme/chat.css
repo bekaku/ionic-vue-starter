@@ -34,8 +34,8 @@
 .wee-messenger-bubble {
   max-width: 450px;
   display: inline-block;
-  padding: 15px;
-  border-radius: 20px;
+  padding: 10px;
+  border-radius: 15px;
 }
 .wee-messenger-info {
   display: flex;
@@ -48,7 +48,7 @@
   font-weight: bold;
 }
 .wee-messenger-info-time {
-  font-size: 0.75em;
+  font-size: 0.65em;
 }
 .wee-messenger-left-msg .wee-messenger-info-time {
   color: var(--wee-messenger-left-info-text);
@@ -73,11 +73,12 @@
 .wee-messenger-right-msg .wee-messenger-img {
   margin: 0 0 0 10px;
 }
-
+.wee-messenger-right-msg .wee-messenger-info-time {
+  color: var(--wee-messenger-right-info-text);
+}
 .wee-messenger-inputarea {
   background: var(--wee-messenger-inputarea-bg);
-  border-radius: 25px;
-  padding: 5px 10px;
+  border-radius: 15px;
 }
 .wee-messenger-inputarea * {
   border: none;
@@ -109,7 +110,7 @@
   width: 100%;
   right: 0;
   bottom: 0;
-  padding: 10px 0;
+  /* padding: 5px 0; */
   background-color: var(--v-color-white);
-  /* border-top: 1px solid var(--wee-messenger-inputarea-border); */
+  border-top: 1px solid var(--wee-messenger-inputarea-border);
 }

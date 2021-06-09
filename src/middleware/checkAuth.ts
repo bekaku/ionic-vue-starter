@@ -10,9 +10,9 @@ export default async (to: any, from: any, next: any) => {
     });
   };
   const currentAuth = await getCurrentAuth();
-  console.log("CurrentAuth", currentAuth);
-  console.log(`from`, from);
-  console.log(`to`, to);
+  console.log("middleware/checkAuth.ts/CurrentAuth", currentAuth);
+  console.log(`middleware/checkAuth.ts/from`, from);
+  console.log(`middleware/checkAuth.ts/to`, to);
   if(currentAuth){
     next();
   }else{

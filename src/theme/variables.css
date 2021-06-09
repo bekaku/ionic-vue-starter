@@ -85,6 +85,7 @@ http://ionicframework.com/docs/theming/ */
   --v-main-border-color-theme-dark: #282829;
 
   --v-main-border-light-color: #f0f0f0;
+  --v-main-border-lighter-color: #f8f8f8;
   --v-main-border-light-color-theme-dark: #282829;
 
   --v-color-white: #fff;
@@ -99,8 +100,9 @@ http://ionicframework.com/docs/theming/ */
   --wee-messenger-right-msg-bg: var(--ion-color-primary);
   --wee-messenger-left-msg-text: #1b2248;
   --wee-messenger-left-info-text: #a4a8bb;
+  --wee-messenger-right-info-text:#9dd5ff;
   --wee-messenger-inputarea-bg: #f5f7fb;
-  --wee-messenger-inputarea-border: var(--v-main-border-light-color);
+  --wee-messenger-inputarea-border: var(--v-main-border-lighter-color);
   /* End Custom Variables */
 
   /* Modufy Ionic variables */
@@ -223,7 +225,7 @@ body[color-theme="dark"] {
   --wee-messenger-left-msg-bg: #2d2d2e;
   --wee-messenger-right-msg-bg: var(--ion-color-primary);
   --wee-messenger-left-msg-text: #fff;
-  --wee-messenger-left-info-text: #fff;
+  --wee-messenger-left-info-text: #acacae;
   --wee-messenger-inputarea-bg: var(--v-second-bg-color-theme-dark);
   --wee-messenger-inputarea-border: var(--v-main-border-light-color-theme-dark);
   /* End Custom variables */
@@ -331,6 +333,9 @@ body[color-theme="dark"] {
 }
 .wee-text-white {
   color: #fff !important;
+}
+.wee-text-smaller {
+  font-size: 0.75em;
 }
 /* .wee-alert-danger .alert-title.sc-ion-alert-md,
 .wee-alert-danger .alert-title.sc-ion-alert-ios {

@@ -3,42 +3,70 @@
     <ion-col class="ion-no-padding ion-no-margin">
       <ion-row>
         <ion-col :size="isTextFocus ? 2 : 5">
-          <template v-if="!isTextFocus">
-            <ion-row class="ion-justify-content-center">
-              <ion-col>
-                <ion-button fill="clear" size="small">
-                  <ion-icon slot="icon-only" :icon="addOutline"></ion-icon>
-                </ion-button>
-                <ion-button fill="clear" size="small">
-                  <ion-icon slot="icon-only" :icon="happyOutline"></ion-icon>
-                </ion-button>
-                <ion-button fill="clear" size="small">
-                  <ion-icon slot="icon-only" :icon="imageOutline"></ion-icon>
-                </ion-button>
-              </ion-col>
+          <ion-grid>
+            <ion-row class="ion-justify-content-center" style="padding-top:5px;">
+              <template v-if="!isTextFocus">
+                <ion-col size="3">
+                  <div>
+                    <ion-button fill="clear" size="small">
+                      <ion-icon slot="icon-only" :icon="addOutline"></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-col>
+                <ion-col size="3">
+                  <div>
+                    <ion-button fill="clear" size="small">
+                      <ion-icon
+                        slot="icon-only"
+                        :icon="happyOutline"
+                      ></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-col>
+                <ion-col size="3">
+                  <div>
+                    <ion-button fill="clear" size="small">
+                      <ion-icon
+                        slot="icon-only"
+                        :icon="cameraOutline"
+                      ></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-col>
+                <ion-col size="3">
+                  <div>
+                    <ion-button fill="clear" size="small">
+                      <ion-icon
+                        slot="icon-only"
+                        :icon="imageOutline"
+                      ></ion-icon>
+                    </ion-button>
+                  </div>
+                </ion-col>
+              </template>
+              <template v-else>
+                <ion-col>
+                   <div>
+                  <ion-button
+                    fill="clear"
+                    size="small"
+                    @click="isTextFocus = false"
+                  >
+                    <ion-icon
+                      slot="icon-only"
+                      :icon="chevronForwardOutline"
+                    ></ion-icon>
+                  </ion-button>
+                   </div>
+                </ion-col>
+              </template>
             </ion-row>
-          </template>
-          <template v-else>
-            <ion-row class="ion-justify-content-center">
-              <ion-col>
-                <ion-button
-                  fill="clear"
-                  size="small"
-                  @click="isTextFocus = false"
-                >
-                  <ion-icon
-                    slot="icon-only"
-                    :icon="chevronForwardOutline"
-                  ></ion-icon>
-                </ion-button>
-              </ion-col>
-            </ion-row>
-          </template>
+          </ion-grid>
         </ion-col>
         <ion-col
-          class="ion-no-padding ion-no-margin"
           :size="isTextFocus ? 10 : 7"
         >
+
           <ion-row>
             <ion-col :size="isTextFocus ? 10 : 12">
               <ion-textarea
@@ -49,7 +77,7 @@
                 placeholder="Write a reply..."
               ></ion-textarea>
             </ion-col>
-            <ion-col v-if="isTextFocus" size="2">
+            <ion-col v-if="isTextFocus" size="2" style="padding-top:15px;">
               <ion-button fill="clear" size="small" @click="onSend">
                 <ion-icon slot="icon-only" :icon="send"></ion-icon>
               </ion-button>
@@ -72,6 +100,7 @@ import {
   imageOutline,
   addOutline,
   send,
+  cameraOutline,
 } from "ionicons/icons";
 export default defineComponent({
   props: {
@@ -101,10 +130,11 @@ export default defineComponent({
 
     const onSend = () => {
       emit("onSend", text.value);
+      text.value = "";
     };
 
-    return {
-      divRef,
+    const icons = {
+      cameraOutline,
       arrowDownOutline,
       arrowUpOutline,
       chevronForwardOutline,
@@ -112,6 +142,10 @@ export default defineComponent({
       imageOutline,
       addOutline,
       send,
+    };
+    return {
+      divRef,
+      ...icons,
       isTextFocus,
       onSend,
       text,

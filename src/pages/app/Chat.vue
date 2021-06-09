@@ -6,7 +6,7 @@
         <ion-buttons slot="start">
           <ion-back-button default-href="/tabs/tab2"></ion-back-button>
           <ion-avatar style="height:35px;width:35px;">
-            <img src="https://avatars.githubusercontent.com/u/33171470?v=4" />
+            <img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
           </ion-avatar>
         </ion-buttons>
         <ion-title>Bekaku</ion-title>
@@ -194,6 +194,7 @@ import {
   // IonIcon,
 } from "@ionic/vue";
 import { ChatMessageType } from "@/interface/Common";
+import { ChatMessage } from "@/interface/ChatMessage";
 import { convertToLink } from "@/utils/util";
 import {
   arrowDownOutline,
@@ -229,21 +230,19 @@ export default defineComponent({
   setup() {
     const { WeeTranslate } = useLocale();
     const contentsChatcroll = ref();
-    const onSend = (text : string) => {
-      console.log("onSend", text);
-    };
-    const items = ref([
+
+    const items = ref<ChatMessage[]>([
       {
         name: "Fin",
         text: "Hi, welcome to SimpleChat! Go ahead and send me a message.😄",
         time: "12:45",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         type: ChatMessageType.TEXT,
         mine: false,
       },
       {
         name: "Fin",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "Listen, I've had a pretty messed up day",
         time: "12:45",
         type: ChatMessageType.TEXT,
@@ -251,7 +250,7 @@ export default defineComponent({
       },
       {
         name: "Bekaku",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "You can change your name in JS section!.",
         time: "12:45",
         type: ChatMessageType.TEXT,
@@ -259,7 +258,7 @@ export default defineComponent({
       },
       {
         name: "Fin",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "Okay",
         time: "12:45",
         type: ChatMessageType.TEXT,
@@ -267,7 +266,7 @@ export default defineComponent({
       },
       {
         name: "Bekaku",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "Sure",
         time: "12:45",
         type: ChatMessageType.TEXT,
@@ -275,7 +274,7 @@ export default defineComponent({
       },
       {
         name: "Bekaku",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "Just let me know!",
         type: ChatMessageType.TEXT,
         time: "12:45",
@@ -283,7 +282,7 @@ export default defineComponent({
       },
       {
         name: "Fin",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text:
           "Just let me know! https://dribbble.com/shots/14355627-Live-Chat-App",
         type: ChatMessageType.TEXT,
@@ -292,7 +291,7 @@ export default defineComponent({
       },
       {
         name: "Fin",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "",
         type: ChatMessageType.IMAGE,
         image:
@@ -302,7 +301,7 @@ export default defineComponent({
       },
       {
         name: "Bekaku",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "https://github.com/bekaku",
         type: ChatMessageType.TEXT,
         time: "12:45",
@@ -310,7 +309,7 @@ export default defineComponent({
       },
       {
         name: "Bekaku",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "",
         lat_map: "13.961579505507864",
         long_map: "100.63035970050973",
@@ -320,7 +319,7 @@ export default defineComponent({
       },
       {
         name: "Fin",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text:
           "Just let me know! https://dribbble.com/shots/14355627-Live-Chat-App",
         type: ChatMessageType.TEXT,
@@ -329,13 +328,32 @@ export default defineComponent({
       },
       {
         name: "Fin",
-        avatar: "https://avatars.githubusercontent.com/u/33171470?v=4",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
         text: "Just let me know!",
         type: ChatMessageType.TEXT,
         time: "12:45",
         mine: false,
       },
     ]);
+    const onSend = (text: string) => {
+      if (!text) {
+        return;
+      }
+      const today = new Date();
+      const item: ChatMessage = {
+        name: "Bekaku",
+        avatar: "https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+        text: text,
+        type: ChatMessageType.TEXT,
+        time: today.getHours() + ":" + today.getMinutes(),
+        mine: true,
+      };
+
+      items.value.push(item);
+      console.log("onSend", text);
+      
+      scrollToBottom();
+    };
     const isSameSender = (index: number) => {
       const prevItem = items.value[index - 1];
       const currentItem = items.value[index];

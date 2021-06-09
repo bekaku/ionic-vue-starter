@@ -9,13 +9,14 @@ export default () => {
     return pluralization ? t(field, pluralization) : t(field);
   };
   const initAppLocale = () => {
+    console.log("initAppLocale", locale.value);
     SetLocale(locale.value);
   };
   const localeStore = computed(() => store.state.appSetting.locale);
 
-  const SetLocale = (lang: string): void => {
+  const SetLocale = (lang: unknown): void => {
     locale.value = lang;
-    localStorage.setItem(LocalStorageAtt.LANGUGE, locale.value);
+    localStorage.setItem(LocalStorageAtt.LANGUGE, locale.value as string);
     // localStorage.getItem(LocalStorageAtt.LANGUGE);
     // localStorage.removeItem(LocalStorageAtt.LANGUGE);
     // localStorage.clear();
@@ -24,7 +25,7 @@ export default () => {
     //add to appSetting store
     store.dispatch("appSetting/setLocaleAction", locale.value);
   };
-  watch(locale, (newValue: string, oldValue: string) => {
+  watch(locale, (newValue: unknown, oldValue: unknown) => {
     if (newValue != oldValue) {
       SetLocale(locale.value);
     }

@@ -1,0 +1,12 @@
+.wee-login {
+  background-color: var(--v-color-white);
+  height: 100%;
+}
+.wee-login-input {
+  background: var(--wee-messenger-inputarea-bg);
+  border-radius: 15px;
+  padding: 5px 5px;
+}
+.wee-login-input input {
+  background-color: black !important;
+}
