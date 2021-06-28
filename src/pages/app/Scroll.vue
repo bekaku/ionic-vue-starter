@@ -69,7 +69,7 @@ export default defineComponent({
   },
   setup() {
     const { WeeScrollToTop } = useBase();
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     const contentscroll = ref();
     const {
       count,
@@ -85,7 +85,7 @@ export default defineComponent({
       incrementAction,
       WeeScrollToTop,
       contentscroll,
-      WeeTranslate,
+      tc,
       arrowUpOutline,
       arrowDownOutline,
       scrollToTop: () => contentscroll.value.$el.scrollToTop(500),

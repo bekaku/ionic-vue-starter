@@ -228,7 +228,7 @@ export default defineComponent({
     // IonIcon,
   },
   setup() {
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     const contentsChatcroll = ref();
 
     const items = ref<ChatMessage[]>([
@@ -379,7 +379,7 @@ export default defineComponent({
       send,
     };
     return {
-      WeeTranslate,
+      tc,
       ...icons,
       scrollToTop: () => contentsChatcroll.value.$el.scrollToTop(500),
       // scrollToBottom: () => contentsChatcroll.value.$el.scrollToBottom(500),

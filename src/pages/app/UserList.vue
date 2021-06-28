@@ -1,6 +1,6 @@
 <template>
   <base-layout
-    :page-title="WeeTranslate('model_user')"
+    :page-title="tc('model_user')"
     fullscreen
     :content-padding="false"
   >
@@ -12,7 +12,7 @@
         <template v-else-if="userList.length > 0">
           <ion-list>
             <ion-list-header>
-              {{ WeeTranslate("model_user") }}
+              {{ tc("model_user") }}
             </ion-list-header>
 
             <template
@@ -31,7 +31,7 @@
             </template>
           </ion-list>
           <ion-text v-if="!infinityLoad" class="ion-text-center wee-text-muted">
-            <p>{{ WeeTranslate("helper.nomoreData") }}</p>
+            <p>{{ tc("helper.nomoreData") }}</p>
           </ion-text>
           <template v-else-if="!isLoading">
             <ion-button fill="clear" expand="block" @click="loadData(undefined)"
@@ -53,7 +53,7 @@
           >
             <ion-infinite-scroll-content
               :loading-spinner="undefined"
-              :loading-text="WeeTranslate('base.pleaseWait')"
+              :loading-text="tc('base.pleaseWait')"
             >
             </ion-infinite-scroll-content>
           </ion-infinite-scroll>
@@ -110,7 +110,7 @@ export default defineComponent({
     // });
 
 
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     const mockService = new MockService();
     const page = ref<number>(1);
     const userList = ref<User[]>([]);
@@ -155,7 +155,7 @@ export default defineComponent({
       }
     };
     return {
-      WeeTranslate,
+      tc,
       userList,
       isLoading,
       isFristLoad,

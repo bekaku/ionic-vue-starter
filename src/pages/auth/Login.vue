@@ -14,7 +14,7 @@
             <ion-col>
               <ion-text class="ion-margin-vertical">
                 <h1 class="wee-fw-600">
-                  {{ WeeTranslate("authen.login") }}
+                  {{ tc("authen.login") }}
                 </h1>
                 <p>Login to your account.</p>
               </ion-text>
@@ -27,7 +27,7 @@
                   <ion-icon slot="start" :icon="personOutline"></ion-icon>
                   <ion-input
                     v-model="username"
-                    :placeholder="WeeTranslate('authen.username')"
+                    :placeholder="tc('authen.username')"
                   ></ion-input>
                   <!-- <ion-label class="ion-text-wrap" position="stacked">
                     <ion-text color="danger">I'm a big deal</ion-text>
@@ -42,7 +42,7 @@
                   <ion-input
                     :type="!showPassword ? 'password' : 'text'"
                     v-model="password"
-                    :placeholder="WeeTranslate('authen.password')"
+                    :placeholder="tc('authen.password')"
                   ></ion-input>
                   <ion-button
                     slot="end"
@@ -60,14 +60,14 @@
                 class="ion-margin-vertical"
                 expand="block"
                 @click="signin"
-                >{{ WeeTranslate("base.submit") }}
+                >{{ tc("base.submit") }}
               </ion-button>
               <ion-button
                 fill="clear"
                 class="ion-margin-vertical"
                 expand="block"
                 size="small"
-                >{{ WeeTranslate("base.forgotPwd") }}
+                >{{ tc("base.forgotPwd") }}
               </ion-button>
               <div class="ion-text-center wee-text-smaller">
                 New to Ionic Starter ?
@@ -128,7 +128,7 @@ export default defineComponent({
   setup() {
     const { SetAuth, CurrentAuth } = useAuth();
     const { WeeGoTo, WeeToast } = useBase();
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     const user = ref<UserCredential | null>();
 
     user.value = CurrentAuth();
@@ -155,7 +155,7 @@ export default defineComponent({
         apiKey:
           "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1aWQiOjEsImtleSI6IjNiZDQ3Mzk0LWFkMTEtNTJhOC1iZmM0LWM4ZDkzYzk4MTY5NCIsImlhdCI6MTYxNjY2NDAyMywiZXhwIjoxNjE5MjU2MDIzfQ.2xxupPXG8XdZv_C6p8mht6-wKW5xOK5ufzJqtGd389c",
       });
-      WeeToast(WeeTranslate("success.loginSuccess"));
+      WeeToast(tc("success.loginSuccess"));
       setTimeout(() => {
         WeeGoTo("/tabs/", true);
       }, 500);
@@ -185,7 +185,7 @@ export default defineComponent({
       SetAuth,
       signin,
       user,
-      WeeTranslate,
+      tc,
       username,
       password,
       showPassword,

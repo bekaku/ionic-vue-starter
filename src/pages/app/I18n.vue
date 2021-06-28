@@ -3,14 +3,14 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <h1>{{ WeeTranslate("welcome", ["Vue3"]) }}</h1>
+          <h1>{{ tc("welcome", ["Vue3"]) }}</h1>
           <button @click="count++">
-            {{ WeeTranslate("count", { count }) }}
+            {{ tc("count", { count }) }}
           </button>
 
           <p>Hello I18n</p>
           <form>
-            <label>{{ WeeTranslate("language") }}</label>
+            <label>{{ tc("language") }}</label>
             <select v-model="locale">
               <option value="en">en</option>
               <option value="th">th</option>
@@ -38,19 +38,19 @@ export default defineComponent({
   setup() {
     const count = ref(0);
     // use local composer
-    const { locale, WeeTranslate, SetLocale } = useLocale();
+    const { locale, tc, SetLocale } = useLocale();
     console.log(
       "components > HelloI18n ",
       " Get Message",
-      WeeTranslate("app.name"),
-      WeeTranslate("count", { count: count.value })
+      tc("app.name"),
+      tc("count", { count: count.value })
     );
     // const { t, locale } = useI18n({
     //   // `locale` inherit from global composer
     //   inheritLocale: true,
     // });
 
-    return { count, WeeTranslate, locale, SetLocale };
+    return { count, tc, locale, SetLocale };
   },
 });
 </script>

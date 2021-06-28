@@ -5,7 +5,7 @@ import { useStore } from "vuex";
 export default () => {
   const store = useStore();
   const { t, locale } = useI18n({ useScope: "global" });
-  const WeeTranslate = (field: string, pluralization?: any): string => {
+  const tc = (field: string, pluralization?: any): string => {
     return pluralization ? t(field, pluralization) : t(field);
   };
   const initAppLocale = () => {
@@ -33,7 +33,7 @@ export default () => {
   return {
     localeStore,
     locale,
-    WeeTranslate,
+    tc,
     SetLocale,
     initAppLocale,
   };

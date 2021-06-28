@@ -9,7 +9,7 @@ import { ref } from "vue";
 export default (): any => {
   const route = useRoute();
   const router = useRouter();
-  const { WeeTranslate } = useLocale();
+  const { tc } = useLocale();
   const appProcessing = ref(false);
   //   console.log("HelloI18n > route Params", route.params, route.query); // fullPath ,  hash, meta, params, path, query, redirectedFrom
   const WeeGetParam = (field: string): any => {
@@ -69,7 +69,7 @@ export default (): any => {
       buttons: [
         {
           side: "end",
-          text: WeeTranslate("base.close"),
+          text: tc("base.close"),
         },
       ],
     });
@@ -82,11 +82,16 @@ export default (): any => {
    * @param text 
    * @returns 
    *   const confirm = await WeeConfirm(
-        WeeTranslate("app.monogram"),
-        WeeTranslate("base.deleteConfirm")
+        tc("app.monogram"),
+        tc("base.deleteConfirm")
       );
    */
-  const WeeConfirm = async (confirmHeader: string, text: string) => {
+  const WeeConfirm = async (
+    confirmHeader: string,
+    text: string,
+    cancelText: string | undefined = undefined,
+    okayText: string | undefined = undefined
+  ) => {
     return new Promise((resolve) => {
       alertController
         .create({
@@ -94,11 +99,11 @@ export default (): any => {
           message: text, //Message <strong>text</strong>!!!
           buttons: [
             {
-              text: WeeTranslate("base.cancel"),
+              text: cancelText ? cancelText : tc("base.cancel"),
               handler: () => resolve(false),
             },
             {
-              text: WeeTranslate("base.submit"),
+              text: okayText ? okayText : tc("base.submit"),
               handler: () => resolve(true),
             },
           ],
@@ -112,14 +117,14 @@ export default (): any => {
   const WeeAlert = async (
     alertMessage: string | undefined,
     alertHeader: string | undefined,
-    type :string |undefined //wee-alert-danger, wee-alert-warning
+    type: string | undefined //wee-alert-danger, wee-alert-warning
   ) => {
     const alert = await alertController.create({
       cssClass: type ? type : undefined,
-      header: WeeTranslate("app.monogram"),
+      header: tc("app.monogram"),
       subHeader: alertHeader,
       message: alertMessage,
-      buttons: [WeeTranslate("base.okay")],
+      buttons: [tc("base.okay")],
     });
     return alert.present();
   };
@@ -136,7 +141,7 @@ export default (): any => {
   const WeeLoading = async (text?: string, spinnerType?: any) => {
     const loading = await loadingController.create({
       cssClass: "my-custom-class",
-      message: text ? text : WeeTranslate("base.pleaseWait"),
+      message: text ? text : tc("base.pleaseWait"),
       // duration: 3000,
       spinner: spinnerType ? spinnerType : "lines", //bubbles" | "circles" | "circular" | "crescent" | "dots" | "lines" | "lines-small" | null | undefined
     });

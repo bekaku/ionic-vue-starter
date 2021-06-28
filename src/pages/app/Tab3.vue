@@ -1,13 +1,15 @@
 <template>
   <base-layout
-    :page-title="WeeTranslate('base.other')"
+    :page-title="tc('base.other')"
     fullscreen
     :show-back-link="false"
     :content-padding="false"
   >
     <template v-slot:actions-start>
       <ion-avatar style="height:35px;width:35px;">
-        <img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+        <img
+          src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+        />
       </ion-avatar>
     </template>
     <template v-slot:actions-end>
@@ -35,7 +37,12 @@
             ></ion-toggle>
           </ion-item>
 
-          <ion-item button @click="WeeGoTo('/i18n')" detail="false" lines="none">
+          <ion-item
+            button
+            @click="WeeGoTo('/i18n')"
+            detail="false"
+            lines="none"
+          >
             <ion-icon :icon="languageOutline" slot="start"></ion-icon>
             <ion-label>
               I18n
@@ -44,7 +51,12 @@
               {{ `Current ${localeStore}` }}
             </ion-badge>
           </ion-item>
-          <ion-item button @click="WeeGoTo('/vuex')" detail="false" lines="none">
+          <ion-item
+            button
+            @click="WeeGoTo('/vuex')"
+            detail="false"
+            lines="none"
+          >
             <ion-icon :icon="briefcaseOutline" slot="start"></ion-icon>
             <ion-label>
               vuex
@@ -55,7 +67,7 @@
             <ion-label>Toast</ion-label>
             <ion-button
               fill="clear"
-              @click="WeeToast(WeeTranslate('welcomeText'), 3000)"
+              @click="WeeToast(tc('welcomeText'), 3000)"
               slot="end"
             >
               Show
@@ -75,12 +87,7 @@
           </ion-item>
           <ion-item
             detail="true"
-            @click="
-              WeeAlert(
-                WeeTranslate('error.loginWrong'),
-                WeeTranslate('error.error')
-              )
-            "
+            @click="WeeAlert(tc('error.loginWrong'), tc('error.error'))"
           >
             <ion-label>WeeAlert</ion-label>
           </ion-item>
@@ -109,7 +116,9 @@
           </ion-list-header>
           <ion-item @click="WeeGoTo('/chat')">
             <ion-avatar slot="start">
-              <img src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" />
+              <img
+                src="https://images.pexels.com/photos/1105191/pexels-photo-1105191.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+              />
             </ion-avatar>
             <ion-label>
               <h2>Finn</h2>
@@ -138,7 +147,20 @@
               </p>
             </ion-label>
           </ion-item>
+          <ion-item lines="none" @click="logout" detail="true">
+            <ion-icon :icon="logOutOutline" slot="start"></ion-icon>
+            <ion-label>
+              <ion-text color="danger">
+              {{ tc("base.logout") }}
+              </ion-text>
+            </ion-label>
+            <!-- <ion-button fill="clear" color="danger" @click="logout" slot="end">
+              {{ tc("base.logout") }}
+            </ion-button> -->
+          </ion-item>
         </ion-list>
+
+        <p>{{ CurrentAuthStore }}</p>
       </ion-col>
     </ion-row>
   </base-layout>
@@ -163,6 +185,7 @@ import {
 import useLocale from "@/composables/useLocale";
 import useBase from "@/composables/useBase";
 import useAppSetting from "@/composables/useAppSetting";
+import useAuth from "@/composables/useAuth";
 import {
   ellipsisVerticalOutline,
   sunnyOutline,
@@ -172,6 +195,7 @@ import {
   trashOutline,
   peopleCircleOutline,
   keyOutline,
+  logOutOutline,
 } from "ionicons/icons";
 export default defineComponent({
   name: "Tab1",
@@ -194,9 +218,10 @@ export default defineComponent({
   },
 
   setup(props, context) {
-    const { WeeTranslate, localeStore } = useLocale();
+    const { tc, localeStore } = useLocale();
     const { darkMode, SetDarkMode } = useAppSetting();
     const { WeeGoTo, WeeToast, WeeConfirm, WeeLoading, WeeAlert } = useBase();
+    const { CurrentAuthStore, SignOut } = useAuth();
     // useIcon();
     console.log("Tab3 > props", props, "context", context);
 
@@ -210,8 +235,8 @@ export default defineComponent({
 
     const confirm = async () => {
       const confirm = await WeeConfirm(
-        WeeTranslate("app.monogram"),
-        WeeTranslate("base.deleteConfirm")
+        tc("app.monogram"),
+        tc("base.deleteConfirm")
       );
       WeeToast("Confirm > " + confirm);
     };
@@ -222,18 +247,20 @@ export default defineComponent({
         loading.dismiss();
       }, 3000);
     };
+    const logout = async () => {
+      const confirm = await WeeConfirm(
+        tc("app.monogram"),
+        tc("helper.logoutConfirm"),
+        undefined,
+        tc("base.logout")
+      );
+      if (confirm) {
+        SignOut();
+        console.log("Tab3 > logout");
+      }
+    };
 
-    return {
-      onEmit,
-      WeeTranslate,
-      WeeGoTo,
-      localeStore,
-      darkMode,
-      SetDarkMode,
-      WeeToast,
-      confirm,
-      showLoading,
-      WeeAlert,
+    const icons = {
       ellipsisVerticalOutline,
       sunnyOutline,
       languageOutline,
@@ -242,6 +269,22 @@ export default defineComponent({
       trashOutline,
       peopleCircleOutline,
       keyOutline,
+      logOutOutline,
+    };
+    return {
+      onEmit,
+      tc,
+      WeeGoTo,
+      localeStore,
+      darkMode,
+      SetDarkMode,
+      WeeToast,
+      confirm,
+      showLoading,
+      WeeAlert,
+      ...icons,
+      logout,
+      CurrentAuthStore,
     };
   },
 });

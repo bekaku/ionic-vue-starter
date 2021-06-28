@@ -104,10 +104,10 @@ export default defineComponent({
     IonButtons,
   },
   setup() {
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     return {
       isPlatform,
-      WeeTranslate,
+      tc,
     };
   },
 });

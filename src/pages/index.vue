@@ -36,7 +36,7 @@ export default defineComponent({
     IonCol,
   },
   setup() {
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     const { WeeGoTo } = useBase();
     const { CurrentAuth } = useAuth();
     if (CurrentAuth()) {
@@ -50,7 +50,7 @@ export default defineComponent({
     }
     return {
       isPlatform,
-      WeeTranslate,
+      tc,
     };
   },
 });

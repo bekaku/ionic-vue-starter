@@ -1,6 +1,6 @@
 <template>
   <base-layout
-    :page-title="WeeTranslate('nav.chats')"
+    :page-title="tc('nav.chats')"
     fullscreen
     :content-padding="false"
     :show-back-link="false"
@@ -13,7 +13,7 @@
     <ion-searchbar
       mode="ios"
       animated
-      :placeholder="WeeTranslate('base.search')+' '+WeeTranslate('nav.chats')"
+      :placeholder="tc('base.search')+' '+tc('nav.chats')"
       debounce="250"
       @ionChange="onSearchChange($event.target.value)"
     ></ion-searchbar>
@@ -136,7 +136,7 @@ export default defineComponent({
   },
   setup() {
     const { WeeGoTo } = useBase();
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     const count = ref(0);
     const filterText = ref("");
     const items = ref([
@@ -189,7 +189,7 @@ export default defineComponent({
 
     return {
       count,
-      WeeTranslate,
+      tc,
       addOutline,
       WeeGoTo,
       items,

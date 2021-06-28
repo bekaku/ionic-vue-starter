@@ -4,7 +4,7 @@
       <ion-col>
         <div class="ion-text-center on-text-wrap">
           <h1 v-if="error" class="ion-padding-vertical wee-fw-600">
-            {{ WeeTranslate("error.error") }}
+            {{ tc("error.error") }}
           </h1>
           <template v-if="showImage">
             <img
@@ -28,7 +28,7 @@
           </template>
 
           <p class="wee-text-muted">
-            {{ text ? text : WeeTranslate("error.dataNotfound") }}
+            {{ text ? text : tc("error.dataNotfound") }}
           </p>
         </div>
       </ion-col>
@@ -67,9 +67,9 @@ export default defineComponent({
     IonIcon,
   },
   setup() {
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     return {
-      WeeTranslate,
+      tc,
       fileTray,
       alertCircle
     };

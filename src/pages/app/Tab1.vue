@@ -1,6 +1,6 @@
 <template>
   <base-layout
-    :page-title="WeeTranslate('base.home')"
+    :page-title="tc('base.home')"
     fullscreen
     :show-back-link="false"
     :content-padding="true"
@@ -43,7 +43,7 @@ export default defineComponent({
   },
 
   setup(props, context) {
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
     // useIcon();
     console.log("Tab1 > props", props, "context", context);
     const logDeviceInfo = async () => {
@@ -57,7 +57,7 @@ export default defineComponent({
     });
 
     return {
-      WeeTranslate,
+      tc,
       ellipsisVerticalOutline,
     };
   },

@@ -8,8 +8,8 @@
               Error 404
             </h1>
             <img class="ion-padding-vertical" :src="require('@/assets/robot-sad.png')" style="width:50%" />
-            <p class="wee-text-muted">{{ WeeTranslate("error.404") }}</p>
-            <ion-button fill="clear" href="/">{{ WeeTranslate("base.back") }}</ion-button>
+            <p class="wee-text-muted">{{ tc("error.404") }}</p>
+            <ion-button fill="clear" href="/">{{ tc("base.back") }}</ion-button>
           </div>
         </ion-col>
       </ion-row>
@@ -31,10 +31,10 @@ export default defineComponent({
     IonButton
   },
   setup() {
-    const { WeeTranslate } = useLocale();
+    const { tc } = useLocale();
 
     return {
-      WeeTranslate,
+      tc,
     };
   },
 });

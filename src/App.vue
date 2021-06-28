@@ -14,6 +14,7 @@ import {
 import { defineComponent, onMounted } from "vue";
 import useLocale from "@/composables/useLocale";
 import useAppSetting from "@/composables/useAppSetting";
+import useAuth from "@/composables/useAuth";
 import { App } from "@capacitor/app";
 export default defineComponent({
   name: "App",
@@ -24,6 +25,7 @@ export default defineComponent({
   setup() {
     const { initAppLocale } = useLocale();
     const { initAppTheme } = useAppSetting();
+    const { initAppAuthen } = useAuth();
     const ionRouter = useIonRouter();
 
     // Hardware Back Button event
@@ -36,6 +38,7 @@ export default defineComponent({
     onMounted(async () => {
       initAppTheme();
       initAppLocale();
+      initAppAuthen();
     });
   },
 });
