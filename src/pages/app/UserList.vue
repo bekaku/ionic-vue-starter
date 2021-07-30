@@ -53,7 +53,7 @@
           >
             <ion-infinite-scroll-content
               :loading-spinner="undefined"
-              :loading-text="tc('base.pleaseWait')"
+              :loading-text="undefined"
             >
             </ion-infinite-scroll-content>
           </ion-infinite-scroll>
@@ -109,7 +109,6 @@ export default defineComponent({
     //   console.log("UserList > useBackButton");
     // });
 
-
     const { tc } = useLocale();
     const mockService = new MockService();
     const page = ref<number>(1);
@@ -119,15 +118,16 @@ export default defineComponent({
     const isFristLoad = ref(false);
     const infinityLoad = ref(true);
     onMounted(() => {
-      fetchData();
+      fetchData(false);
     });
 
-    const fetchData = async () => {
+    const fetchData = async (hideLoading: boolean) => {
       // const loading = await WeeLoading();
       // loading.present();
       // loading.dismiss();
-      isLoading.value = true;
-
+      if (!hideLoading) {
+        isLoading.value = true;
+      }
       const res: ApiResponse = await mockService.getUserAll(page.value);
       isLoading.value = false;
       console.log("getUserAll", res);
@@ -148,7 +148,7 @@ export default defineComponent({
     const loadData = async (ev: any | undefined) => {
       if (infinityLoad.value) {
         page.value++;
-        await fetchData();
+        await fetchData(ev ? true : false);
       }
       if (ev != undefined && ev.target) {
         ev.target.complete();

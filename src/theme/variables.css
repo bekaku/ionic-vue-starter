@@ -1,16 +1,16 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
 /* @import url("https://fonts.googleapis.com/css2?family=Kanit&display=swap"); */
-@import url("https://fonts.googleapis.com/css2?family=Prompt&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;400;600&display=swap");
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #008bf2;
-  --ion-color-primary-rgb: 0, 139, 242;
+  --ion-color-primary: #00b894;
+  --ion-color-primary-rgb: 0,184,148;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #007ad5;
-  --ion-color-primary-tint: #1a97f3;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #00a282;
+  --ion-color-primary-tint: #1abf9f;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
@@ -101,7 +101,7 @@ http://ionicframework.com/docs/theming/ */
   --wee-messenger-right-msg-bg: var(--ion-color-primary);
   --wee-messenger-left-msg-text: #1b2248;
   --wee-messenger-left-info-text: #a4a8bb;
-  --wee-messenger-right-info-text:#9dd5ff;
+  --wee-messenger-right-info-text: #dee0e7;
   --wee-messenger-inputarea-bg: #f5f7fb;
   --wee-messenger-inputarea-border: var(--v-main-border-lighter-color);
   /* End Custom Variables */
@@ -113,7 +113,8 @@ http://ionicframework.com/docs/theming/ */
   /* Set the font family of the entire app */
   /* --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue","Roboto", sans-serif; */
   /* --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Kanit", sans-serif; */
-  --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Prompt", sans-serif;
+  --ion-font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+    "Prompt", sans-serif;
 
   /* Tab bar  */
   --ion-tab-bar-background: var(--v-bar-background);
@@ -139,12 +140,12 @@ http://ionicframework.com/docs/theming/ */
 
 body[color-theme="dark"] {
   /** primary **/
-  --ion-color-primary: #008bf2;
-  --ion-color-primary-rgb: 0, 139, 242;
+  --ion-color-primary: #00b894;
+  --ion-color-primary-rgb: 0,184,148;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255, 255, 255;
-  --ion-color-primary-shade: #007ad5;
-  --ion-color-primary-tint: #1a97f3;
+  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-shade: #00a282;
+  --ion-color-primary-tint: #1abf9f;
 
   /** secondary **/
   --ion-color-secondary: #3dc2ff;
