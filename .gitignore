@@ -35,3 +35,4 @@ android/app/src/main/assets/public/
 ios/App/public/
 
 yarn.lock
+package-lock.json
