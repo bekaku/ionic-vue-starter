@@ -94,7 +94,9 @@ export default class Service {
           });
       }
     } catch (errors) {
-      response.error = `${url} \n ${errors.message}`;
+      if (errors instanceof Error) {
+        response.error = `${url} \n ${errors.message}`;
+      }
       return new Promise((resolve) => {
         resolve(response);
       });
