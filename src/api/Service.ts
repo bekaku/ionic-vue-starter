@@ -15,16 +15,14 @@ export default class Service {
       resove(`Bearer your_jwt_token`);
     });
   }
-  async getDefaultAxios(
-    header?: DefaultAxiosInstance | undefined
-  ): Promise<AxiosInstance> {
+  async getDefaultAxios(header?: DefaultAxiosInstance | undefined): Promise<AxiosInstance> {
     const defaultAxios = axios.create({
       baseURL: DefaultApiEndpoint,
       withCredentials: false,
-      headers: header ? header : DefaultAxiosHeader,
+      // headers: header ? header : DefaultAxiosHeader,
       timeout: 60 * 1000,
     });
-    defaultAxios.defaults.headers.Authorization = await this.getUserTokenKey();
+    // defaultAxios.defaults.headers.Authorization = await this.getUserTokenKey();
     return new Promise((resove) => {
       resove(defaultAxios);
     });
