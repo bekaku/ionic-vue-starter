@@ -1,28 +1,29 @@
-import {
-  AxiosMethod,
-  ApiResponse,
-  DefaultAxiosInstance,
-} from "../interface/Common";
+import { AxiosMethod, ApiResponse } from "../interface/Common";
 import { DefaultApiEndpoint, DefaultAxiosHeader } from "@/config/config";
 import axios, { AxiosInstance } from "axios";
 export default class Service {
   // constructor() {}
 
-  getUserTokenKey(): Promise<String> {
+  getUserTokenKey(): Promise<string> {
     // const currentUser = await getCurrentUser();
     return new Promise((resove) => {
       //   resove(currentUser ? `Bearer ${currentUser.apiKey}` : '');
       resove(`Bearer your_jwt_token`);
     });
   }
-  async getDefaultAxios(header?: DefaultAxiosInstance | undefined): Promise<AxiosInstance> {
+  async getDefaultAxios(header?: any | undefined): Promise<AxiosInstance> {
+    const token = await this.getUserTokenKey();
+    const defaultHeader = Object.assign(DefaultAxiosHeader, {
+      Authorization: token,
+    });
     const defaultAxios = axios.create({
       baseURL: DefaultApiEndpoint,
       withCredentials: false,
-      // headers: header ? header : DefaultAxiosHeader,
+      headers: header ? header : defaultHeader,
       timeout: 60 * 1000,
     });
     // defaultAxios.defaults.headers.Authorization = await this.getUserTokenKey();
+    // defaultAxios.defaults.headers.get.Authorization = await this.getUserTokenKey();
     return new Promise((resove) => {
       resove(defaultAxios);
     });
@@ -58,8 +59,8 @@ export default class Service {
         resolve(response);
       });
     }
-    // console.log(axioApi.defaults.baseURL + url)
-    // console.log('jwt : '+axioApi.defaults.headers.Authorization);
+    console.log(axiosApi.defaults.baseURL + url);
+    console.log("Service.ts > callApi ", axiosApi.defaults.headers);
     try {
       switch (method) {
         case AxiosMethod.POST:

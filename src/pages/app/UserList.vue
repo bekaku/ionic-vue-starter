@@ -128,19 +128,23 @@ export default defineComponent({
       if (!hideLoading) {
         isLoading.value = true;
       }
-      const res: ApiResponse = await mockService.getUserAll(page.value);
-      isLoading.value = false;
-      console.log("getUserAll", res);
+      const resTest: ApiResponse = await mockService.test();
+      console.log('resTest', resTest);
 
-      const { data } = res.response;
-      if (!isFristLoad.value) {
-        isFristLoad.value = true;
-      }
-      if (data && data.length > 0) {
-        userList.value = userList.value?.concat(data);
-      } else {
-        infinityLoad.value = false;
-      }
+
+      // const res: ApiResponse = await mockService.getUserAll(page.value);
+      // isLoading.value = false;
+      // console.log("getUserAll", res);
+
+      // const { data } = res.response;
+      // if (!isFristLoad.value) {
+      //   isFristLoad.value = true;
+      // }
+      // if (data && data.length > 0) {
+      //   userList.value = userList.value?.concat(data);
+      // } else {
+      //   infinityLoad.value = false;
+      // }
       return new Promise((resove) => {
         resove(true);
       });

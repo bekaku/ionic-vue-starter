@@ -7,4 +7,8 @@ export default class MockService extends Service {
     return this.callApiGet(`/users?page=${page}`);
   }
 
+  test() {
+    return this.callApiGet(`/test`);
+  }
+
 }

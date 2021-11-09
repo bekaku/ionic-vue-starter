@@ -1,4 +1,4 @@
-import { LocaleOption, DefaultAxiosInstance } from "@/interface/Common";
+import { LocaleOption} from "@/interface/Common";
 // export const SiteDomain =process.env.NODE_ENV === "production" ? "bekaku.com" : "localhost";
 // export const SiteUrl: string = `https://${SiteDomain}`;
 export const AppPrefix = "ionic_vue_starter";
@@ -39,16 +39,17 @@ export const LocalStorageAtt = {
 // export const DefaultApiEndpoint = PoroductionMode
 //   ? "https://centerapi.a.com"
 //   : "http://localhost/grandats_project/grand-center-api";
-export const DefaultApiEndpoint = "https://reqres.in/api";
+// export const DefaultApiEndpoint = "https://reqres.in/api";
+export const DefaultApiEndpoint = "http://localhost/edr_php";
 export const ApiClient = "default";
 export const UniqeTokenAtt = "X-uniqe-token";
 export const DefaultContentType = "application/json; charset=UTF-8";
-export const DefaultAxiosHeader: DefaultAxiosInstance = {
+// export const DefaultAxiosHeader: DefaultAxiosInstance = {
+export const DefaultAxiosHeader = {
   // baseURL: DefaultApiEndpoint,
   Accept: "application/json",
   "Content-Type": DefaultContentType,
   "X-language": DefaultLocale,
-
   "Code-Version": CodeVersion,
   "X-Api-Client": ApiClient,
   Authorization: "",
