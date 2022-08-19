@@ -228,7 +228,7 @@ import {
   repeatOutline,
 } from "ionicons/icons";
 export default defineComponent({
-  name: "Tab1",
+  name: "Tab1Page",
   components: {
     IonIcon,
     IonButton,

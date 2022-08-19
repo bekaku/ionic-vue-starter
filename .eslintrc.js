@@ -17,7 +17,13 @@ module.exports = {
     "vue/no-deprecated-slot-attribute": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/ban-types": "off"
+    "@typescript-eslint/ban-types": "off",
+    "vue/multi-word-component-names": [
+      "error",
+      {
+        ignores: [],
+      },
+    ],
   },
   overrides: [
     {

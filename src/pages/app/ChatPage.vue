@@ -58,7 +58,7 @@
                         <ion-img :src="item.image"></ion-img>
                       </template>
                       <template v-else>
-                        <div v-html="convertToLink(item.text)"></div>
+                        <div v-html="convertToLink(item.text, false)"></div>
                       </template>
                     </div>
                   </div>
@@ -207,7 +207,7 @@ import {
 } from "ionicons/icons";
 import useLocale from "@/composables/useLocale";
 export default defineComponent({
-  name: "Vuex",
+  name: "ChatPage",
   components: {
     MessageBar: defineAsyncComponent(() =>
       import("@/components/chat/MessageBar.vue")

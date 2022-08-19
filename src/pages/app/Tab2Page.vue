@@ -118,12 +118,12 @@ import useLocale from "@/composables/useLocale";
 import useBase from "@/composables/useBase";
 
 export default defineComponent({
-  name: "Tab2",
+  name: "Tab2Page",
   components: {
     BaseLayout: defineAsyncComponent(() =>
       import("@/components/base/BaseLayout.vue")
     ),
-    Error: defineAsyncComponent(() => import("@/components/Error.vue")),
+    Error: defineAsyncComponent(() => import("@/components/ErrorComponent.vue")),
     IonFab,
     IonFabButton,
     IonIcon,

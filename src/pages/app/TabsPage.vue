@@ -1,9 +1,10 @@
 <template>
   <ion-page>
     <ion-tabs
-      @ionTabsWillChange="beforeTabChange"
+      @ionTabsWillChange="beforeTabChange()"
       @ionTabsDidChange="afterTabChange"
     >
+    <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon :icon="homeOutline" />
@@ -33,6 +34,7 @@ import {
   IonLabel,
   IonIcon,
   IonPage,
+  IonRouterOutlet
 } from "@ionic/vue";
 import {
   homeOutline,
@@ -41,9 +43,8 @@ import {
 } from "ionicons/icons";
 import useLocale from "@/composables/useLocale";
 export default {
-  name: "Tabs",
-  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage },
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  name: "TabsPage",
+  components: { IonLabel, IonTabs, IonTabBar, IonTabButton, IonIcon, IonPage, IonRouterOutlet },
   setup() {
     const { tc } = useLocale();
     const beforeTabChange = () => {
@@ -55,12 +56,12 @@ export default {
       console.log("afterTabChange");
     };
     return {
-      homeOutline,
-      chatbubbleOutline,
-      ellipsisHorizontalOutline,
       tc,
       beforeTabChange,
       afterTabChange,
+      homeOutline,
+      chatbubbleOutline,
+      ellipsisHorizontalOutline,
     };
   },
 };

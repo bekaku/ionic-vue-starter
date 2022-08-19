@@ -84,7 +84,6 @@ import MockService from "@/api/MockService";
 import { ApiResponse } from "@/interface/Common";
 import { User } from "@/interface/MockTypes";
 export default defineComponent({
-  name: "Tab2",
   components: {
     IonRow,
     IonCol,

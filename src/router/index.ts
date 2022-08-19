@@ -16,11 +16,11 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/index",
         name: "Index",
-        component: () => import("@/pages/index.vue"),
+        component: () => import("@/pages/IndexPage.vue"),
       },
       {
         path: "/tabs/",
-        component: () => import("@/pages/app/Tabs.vue"),
+        component: () => import("@/pages/app/TabsPage.vue"),
         children: [
           {
             path: "",
@@ -28,32 +28,32 @@ const routes: Array<RouteRecordRaw> = [
           },
           {
             path: "tab1",
-            component: () => import("@/pages/app/Tab1.vue"),
+            component: () => import("@/pages/app/Tab1Page.vue"),
           },
           {
             path: "tab2",
-            component: () => import("@/pages/app/Tab2.vue"),
+            component: () => import("@/pages/app/Tab2Page.vue"),
           },
           {
             path: "tab3",
-            component: () => import("@/pages/app/Tab3.vue"),
+            component: () => import("@/pages/app/Tab3Page.vue"),
           },
         ],
       },
       {
         path: "/i18n",
         name: "I18n",
-        component: () => import("@/pages/app/I18n.vue"),
+        component: () => import("@/pages/app/I18nPage.vue"),
       },
       {
         path: "/vuex",
         name: "Vuex",
-        component: () => import("@/pages/app/Vuex.vue"),
+        component: () => import("@/pages/app/VuexPage.vue"),
       },
       {
         path: "/scroll",
         name: "Scroll",
-        component: () => import("@/pages/app/Scroll.vue"),
+        component: () => import("@/pages/app/ScrollPage.vue"),
       },
       {
         path: "/userList",
@@ -63,12 +63,12 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "/icons",
         name: "Icons",
-        component: () => import("@/pages/app/Icons.vue"),
+        component: () => import("@/pages/app/IconsPage.vue"),
       },
       {
         path: "/chat",
         name: "Chat",
-        component: () => import("@/pages/app/Chat.vue"),
+        component: () => import("@/pages/app/ChatPage.vue"),
       },
     ],
   },
@@ -83,7 +83,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "login",
         name: "Login",
-        component: () => import("@/pages/auth/Login.vue"),
+        component: () => import("@/pages/auth/LoginPage.vue"),
       },
     ],
   },
@@ -98,7 +98,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: "error404",
         name: "Error404",
-        component: () => import("@/pages/error/Error404.vue"),
+        component: () => import("@/pages/error/Error404Page.vue"),
       },
     ],
   },

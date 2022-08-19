@@ -4,38 +4,30 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button></ion-back-button>
+          <ion-back-button default-href="/tabs/tab1"></ion-back-button>
         </ion-buttons>
-        <ion-title>Vuex</ion-title>
+        <ion-title>Scroll</ion-title>
       </ion-toolbar>
     </ion-header>
-    <ion-content ref="contentwee">
+    <ion-content ref="contentscroll">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <h1>Vuex</h1>
-            <p>
-              {{ `Count : ${count}` }}
-            </p>
-            <p>
-              {{ `isMoreThanTen : ${isMoreThanTen}` }}
-            </p>
-            <p>
-              <ion-button @click="increment">Increment Mutation</ion-button>
-            </p>
-            <p>
-              <ion-button @click="incrementAction">Increment Action</ion-button>
-            </p>
-
+            <h1>Scroll to top and bottom</h1>
             <p v-for="i in 100" :key="i">
               {{ `No. ${i}` }}
             </p>
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-fab vertical="top" horizontal="end" slot="fixed">
+        <ion-fab-button color="primary" @click="scrollToBottom">
+          <ion-icon :icon="arrowDownOutline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
         <ion-fab-button color="primary" @click="scrollToTop">
-          <ion-icon name="arrow-up-outline"></ion-icon>
+          <ion-icon :icon="arrowUpOutline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
     </ion-content>
@@ -56,12 +48,13 @@ import {
   IonContent,
   IonTitle,
   IonBackButton,
-  IonButton,
 } from "@ionic/vue";
 // import BaseLayout from "@/components/base/BaseLayout.vue";
+import { arrowDownOutline, arrowUpOutline } from "ionicons/icons";
 import useBase from "@/composables/useBase";
+import useLocale from "@/composables/useLocale";
 export default defineComponent({
-  name: "Vuex",
+  name: "ScrollPage",
   components: {
     // BaseLayout,
     IonRow,
@@ -73,11 +66,11 @@ export default defineComponent({
     IonTitle,
     IonToolbar,
     IonBackButton,
-    IonButton,
   },
   setup() {
     const { WeeScrollToTop } = useBase();
-    const contentwee = ref();
+    const { tc } = useLocale();
+    const contentscroll = ref();
     const {
       count,
       isMoreThanTen,
@@ -91,8 +84,12 @@ export default defineComponent({
       increment,
       incrementAction,
       WeeScrollToTop,
-      contentwee,
-      scrollToTop: () => contentwee.value.$el.scrollToTop(500),
+      contentscroll,
+      tc,
+      arrowUpOutline,
+      arrowDownOutline,
+      scrollToTop: () => contentscroll.value.$el.scrollToTop(500),
+      scrollToBottom: () => contentscroll.value.$el.scrollToBottom(500),
     };
   },
 });

@@ -198,7 +198,7 @@ import {
   logOutOutline,
 } from "ionicons/icons";
 export default defineComponent({
-  name: "Tab1",
+  name: "Tab3Page",
   components: {
     IonIcon,
     IonButton,

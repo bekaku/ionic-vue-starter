@@ -3,7 +3,7 @@ import {
 } from "ionicons/icons";
 export default {
   rippleEffect: true,
-  // mode: "ios",//md, ios
+  mode: "ios",//md, ios
   animated: true,
   hardwareBackButton: true,
   backButtonText: "",
